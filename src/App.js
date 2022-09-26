@@ -6,6 +6,7 @@ import './App.css';
 import { Col, Container, Row } from 'react-bootstrap';
 
 import LeftDownSideBar from './components/LeftDownSideBar';
+import AddPost from './components/AddPost';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Row>
       <Col>
       <LeftDownSideBar/>
+      <AddPost/>
        </Col>
       </Row>
     </Container>
