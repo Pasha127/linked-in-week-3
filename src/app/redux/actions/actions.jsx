@@ -34,18 +34,18 @@ export const setSignOut =person =>({
     type:SIGN_OUT,
     payload: person
   });
-  /* 
-export const handleSubmitWithThunk = (q) => {
-  const baseEndpoint = 'https://strive-jobs-api.herokuapp.com/jobs?search='
+  
+export const handleFetchWithThunk = (id) => {
+  const baseEndpoint = 'https://striveschool-api.herokuapp.com/api/profile/me'
   console.log("1 think")
   return async (dispatch, getState)=>{
     try {
-      console.log("2 thank",baseEndpoint,q)
+      console.log("2 thank",baseEndpoint,id)
       dispatch(setLoading(true));
-      const response = await fetch(baseEndpoint + q + '&limit=40')
+      const response = await fetch(baseEndpoint + id)
       if (response.ok) {
         const { data } = await response.json()
-        dispatch(setJobs(data))
+        dispatch(setSignIn(data))
        // console.log(data);
       } else {
         alert('Error fetching results')
@@ -53,4 +53,4 @@ export const handleSubmitWithThunk = (q) => {
     } catch (error) {
       console.log(error)
     }finally{console.log("3 thunk");dispatch(setLoading(false));}
-  }} */
+  }} 

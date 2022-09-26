@@ -1,9 +1,17 @@
 import { Navbar,Container, Nav, FormControl, Form } from "react-bootstrap"
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "../css/NavBar.css"
+import { handleFetchWithThunk } from "../app/redux/actions/actions";
+import { useEffect } from "react";
 
-const NavBar =() => {
-return (
+const NavBar =(props) => {
+
+  
+  useEffect(()=>{
+    handleFetchWithThunk("me")
+},[])
+
+return (<>
 
       <Navbar bg="light" expand="lg" className="Navbar">
       <Container>
@@ -28,7 +36,7 @@ return (
                   height: "34px",
                   width: "110%",
                 }}
-              />
+                />
             </Form>
             </div>
 
@@ -88,6 +96,7 @@ return (
           </Nav>
       </Container>
     </Navbar>
+               </>
 )
 }
 

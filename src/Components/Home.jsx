@@ -24,7 +24,12 @@ const Home = (props)=>{
 return(
 <>
 {console.log("loading:",props.loadState)}
+<div className="container">
 {props.loadState && <Loader/>}
+
+
+</div>
+
 </>
 )
 }
