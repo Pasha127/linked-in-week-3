@@ -54,9 +54,9 @@ export const handleFetchWithThunk = (id) => {
       dispatch(setLoading(true));
       const response = await fetch(baseEndpoint + id, options);
       if (response.ok) {
-        const { data } = await response.json()
+        const  data  = await response.json()
         dispatch(setSignIn(data))
-       // console.log(data);
+       console.log("thick n THunky",data);
       } else {
         alert('Error fetching results')
       }

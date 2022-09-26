@@ -93,7 +93,7 @@ return (<>
           <Nav.Link
              className="d-flex flex-column align-items-center pr-4"
              href="#home" style={{width: "90px"}}>
-            <span className="d-none d-md-inline-block mt-3" style={{fontSize: "12px"}}>{props.currentUser.id}</span>
+            <span className="d-none d-md-inline-block mt-3" style={{fontSize: "12px"}}>{props.currentUser.name}</span>
           </Nav.Link>
 
 
