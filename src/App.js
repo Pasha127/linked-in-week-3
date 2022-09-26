@@ -6,6 +6,8 @@ import './App.css';
 import { Col, Container, Row } from 'react-bootstrap';
 
 import LeftDownSideBar from './components/LeftDownSideBar';
+
+import FooterRightSide from './components/FooterRightSide';
 import AddPost from './components/AddPost';
 
 function App() {
@@ -16,7 +18,7 @@ function App() {
       <Row>
       <Col>
       <LeftDownSideBar/>
-      <AddPost/>
+      <FooterRightSide/>
        </Col>
       </Row>
     </Container>

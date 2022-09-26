@@ -1,5 +1,5 @@
 import { Image, Button, Card, Form, FormControl} from "react-bootstrap";
-import "../css/AddPost.css"
+
 
 const AddPost = () => {
 return (
