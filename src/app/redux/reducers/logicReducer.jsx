@@ -1,6 +1,6 @@
-import { initialState } from "../redux/store/store";
-
-const logicReducer = (state = initialState.logic, action) => {
+import { initialState } from "../store/store";
+import { LOADING,SEARCH, LIKE, UNLIKE } from "../actions/actions";
+const logicReducer = (state = initialState, action) => {
     switch (action.type) {
       case LOADING:
         return {
@@ -16,6 +16,11 @@ const logicReducer = (state = initialState.logic, action) => {
         return {
           ...state,
          liked: [...state.logic.liked, action.payload]          
+        };       
+      case UNLIKE:
+        return {
+          ...state,
+         liked: state.logic.liked.filter((post) => post._id !== action.payload._id)    
         };       
       
       default:

@@ -3,6 +3,8 @@ import counterReducer from '../../../features/counter/counterSlice';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
 import thunk from 'redux-thunk';
+import userReducer from '../reducers/userReducer';
+import logicReducer from '../reducers/logicREducer';
 
 
 const persistConfig = {
@@ -28,6 +30,6 @@ const persistedReducer = persistReducer(persistConfig, bigReducer)
 
 
 export const store = configureStore({
-  reducer: bigReducer,
+  reducer: persistedReducer,
   devTools: process.env.NODE_ENV !== 'production',
 })
