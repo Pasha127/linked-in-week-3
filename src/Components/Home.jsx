@@ -1,8 +1,7 @@
-import { Container, Row, Col, Form,Button } from 'react-bootstrap'
+/* import { Container, Row, Col, Form,Button } from 'react-bootstrap' */
 import { connect } from "react-redux";
-import { Link } from 'react-router-dom';
-import {/*  handleSubmitWithThunk, setQuery */ } from '../Redux/Actions/Actions';
-import {setSearch} from "..app/redux/actions/actions"
+/* import { Link } from 'react-router-dom'; */
+import { setSearch } from '../app/redux/actions/actions';
 import Loader from './Loader';
 
 

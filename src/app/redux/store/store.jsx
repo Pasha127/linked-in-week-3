@@ -1,10 +1,9 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../../../features/counter/counterSlice';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
 import thunk from 'redux-thunk';
 import userReducer from '../reducers/userReducer';
-import logicReducer from '../reducers/logicREducer';
+import logicReducer from '../reducers/logicReducer';
 
 
 const persistConfig = {
