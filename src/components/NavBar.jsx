@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 const mapStateToProps = state => {
   return {
   loadState: state.logicRoot.logic.loading,
-  currentUser: state.userRoot.user.currentUser
+  currentUser: state.userRoot.user.activeUser
   };
 };
 
@@ -28,6 +28,7 @@ const NavBar =(props) => {
 },[]) 
 
 return (<>
+      
 
       <Navbar bg="light" expand="lg" className="Navbar">
       <Container>
@@ -92,7 +93,7 @@ return (<>
           <Nav.Link
              className="d-flex flex-column align-items-center pr-4"
              href="#home" style={{width: "90px"}}>
-            <span className="d-none d-md-inline-block mt-3" style={{fontSize: "12px"}}>{console.log(props)}</span>
+            <span className="d-none d-md-inline-block mt-3" style={{fontSize: "12px"}}>{props.currentUser.id}</span>
           </Nav.Link>
 
 

@@ -50,7 +50,7 @@ export const handleFetchWithThunk = (id) => {
   console.log("1 think")
   return async (dispatch, getState)=>{
     try {
-      console.log("2 thank",baseEndpoint,id)
+      console.log("2 thank",baseEndpoint+id)
       dispatch(setLoading(true));
       const response = await fetch(baseEndpoint + id, options);
       if (response.ok) {

@@ -45,6 +45,7 @@
   position: fixed;
   justify-content: center;
   align-items: center;
+  left: 0;
 }
 div.spinner-border{
   width: 12rem;

@@ -10,7 +10,8 @@ const userReducer = (state = initialState, action) => {
       case SIGN_IN:
         return {
           ...state,
-          activeUser: action.payload          
+          user:{...state.userRoot.user,
+          activeUser: action.payload  }        
         };       
       case SIGN_OUT:
         return {
