@@ -4,7 +4,8 @@ import NavBar from './components/NavBar';
 import './App.css';
 
 import { Col, Container, Row } from 'react-bootstrap';
-import LeftSideBar from './components/LeftSideBar';
+
+import LeftDownSideBar from './components/LeftDownSideBar';
 
 function App() {
   return (
@@ -13,8 +14,7 @@ function App() {
     <Container>
       <Row>
       <Col>
-
-       <LeftSideBar/>
+      <LeftDownSideBar/>
        </Col>
       </Row>
     </Container>
