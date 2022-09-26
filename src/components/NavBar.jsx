@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 const mapStateToProps = state => {
   return {
   loadState: state.logicRoot.logic.loading,
-  currentUser: state.userRoot.user.activeUser
+  currentUser: state.user
   };
 };
 
@@ -23,12 +23,12 @@ const mapDispatchToProps = dispatch => {
 };
 const NavBar =(props) => {
 
-    useEffect(()=>{
+  
+  useEffect(()=>{
     props.getFetch("me")
 },[]) 
 
 return (<>
-      
 
       <Navbar bg="light" expand="lg" className="Navbar">
       <Container>
@@ -93,7 +93,7 @@ return (<>
           <Nav.Link
              className="d-flex flex-column align-items-center pr-4"
              href="#home" style={{width: "90px"}}>
-            <span className="d-none d-md-inline-block mt-3" style={{fontSize: "12px"}}>{props.currentUser.id}</span>
+            <span className="d-none d-md-inline-block mt-3" style={{fontSize: "12px"}}>{console.log("thick n thunky",props)}</span>
           </Nav.Link>
 
 

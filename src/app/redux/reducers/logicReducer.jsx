@@ -5,8 +5,8 @@ const logicReducer = (state = initialState, action) => {
       case LOADING:
         return {
           ...state,
-          logic:{...state.logicRoot, 
-            loading: action.payload   }     
+          logic:{...state.logicRoot.logic, 
+            loading: action.payload}          
         };        
       case SEARCH:
         return {

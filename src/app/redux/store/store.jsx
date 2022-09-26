@@ -14,7 +14,7 @@ const persistConfig = {
 
 export const initialState = {
   logic: {search:"",liked:[],loading:true},
-  user:{users:[],activeUser:{id:"",pass:""}}
+  user:{users:[],activeUser:{}}
 } 
 
 const bigReducer = combineReducers({
