@@ -7,7 +7,7 @@ import Loader from './Loader';
 
 const mapStateToProps = state => {
     return {
-    loading: state.logic.loading
+    loadState: state.logicRoot.logic.loading
     };
   };
   
@@ -23,8 +23,9 @@ const mapStateToProps = state => {
 const Home = (props)=>{
 return(
 <>
-{props.loading && <Loader/>}
+{console.log("loading:",props.loadState)}
+{props.loadState && <Loader/>}
 </>
 )
 }
-export default connect(mapDispatchToProps,mapStateToProps)( Home)
+export default connect(mapStateToProps, mapDispatchToProps)( Home)
