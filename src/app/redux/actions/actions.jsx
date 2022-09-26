@@ -36,13 +36,23 @@ export const setSignOut =person =>({
   });
   
 export const handleFetchWithThunk = (id) => {
-  const baseEndpoint = 'https://striveschool-api.herokuapp.com/api/profile/me'
+
+    const options = {
+        method: 'GET',
+        headers: {
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMxOGRiNDc2NTM5YzAwMTViNWNkNmEiLCJpYXQiOjE2NjQxOTE5MjQsImV4cCI6MTY2NTQwMTUyNH0.L96ybdKZjUiPLG95huiiaqlmfE5bLIunxqmgGUnOYBY'
+            
+        }
+    };
+    
+   
+  const baseEndpoint = 'https://striveschool-api.herokuapp.com/api/profile/'
   console.log("1 think")
   return async (dispatch, getState)=>{
     try {
       console.log("2 thank",baseEndpoint,id)
       dispatch(setLoading(true));
-      const response = await fetch(baseEndpoint + id)
+      const response = await fetch(baseEndpoint + id, options);
       if (response.ok) {
         const { data } = await response.json()
         dispatch(setSignIn(data))

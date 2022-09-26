@@ -3,13 +3,29 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import "../css/NavBar.css"
 import { handleFetchWithThunk } from "../app/redux/actions/actions";
 import { useEffect } from "react";
+import { connect } from "react-redux";
 
+const mapStateToProps = state => {
+  return {
+  loadState: state.logicRoot.logic.loading,
+  currentUser: state.userRoot.user.currentUser
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getFetch: person => {
+      dispatch(handleFetchWithThunk(person));
+    },
+
+    
+  };  
+};
 const NavBar =(props) => {
 
-  
-  useEffect(()=>{
-    handleFetchWithThunk("me")
-},[])
+    useEffect(()=>{
+    props.getFetch("me")
+},[]) 
 
 return (<>
 
@@ -76,7 +92,7 @@ return (<>
           <Nav.Link
              className="d-flex flex-column align-items-center pr-4"
              href="#home" style={{width: "90px"}}>
-            <span className="d-none d-md-inline-block mt-3" style={{fontSize: "12px"}}>PROFILE</span>
+            <span className="d-none d-md-inline-block mt-3" style={{fontSize: "12px"}}>{console.log(props)}</span>
           </Nav.Link>
 
 
@@ -100,4 +116,4 @@ return (<>
 )
 }
 
-export default NavBar
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar)
