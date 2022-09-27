@@ -1,6 +1,6 @@
 export const LOADING = " LOADING";
 export const SEARCH = "SEARCH";
- export const LIKE = " LIKE";
+export const LIKE = " LIKE";
 export const UNLIKE = "UNLIKE";
 export  const SIGN_UP = "SIGN_UP";
 export  const SIGN_IN = "SIGN_IN";
@@ -39,7 +39,7 @@ export const setFriends =people =>({
     type: GET_FRIENDS,
     payload: people
   });
-  
+
 export const handleFetchWithThunk = (id) => {
 
     const options = {
@@ -49,9 +49,8 @@ export const handleFetchWithThunk = (id) => {
             
         }
     };
-    
-   
-  const baseEndpoint = 'https://striveschool-api.herokuapp.com/api/profile/'
+
+ const baseEndpoint = 'https://striveschool-api.herokuapp.com/api/profile/'
   console.log("1 think")
   return async (dispatch, getState)=>{
     try {
@@ -68,18 +67,18 @@ export const handleFetchWithThunk = (id) => {
     } catch (error) {
       console.log(error)
     }finally{console.log("3 thunk");dispatch(setLoading(false));}
-  }} 
+  }}
 export const getFriendsWithThunk = () => {
 
     const options = {
         method: 'GET',
         headers: {
             Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMxOGRiNDc2NTM5YzAwMTViNWNkNmEiLCJpYXQiOjE2NjQxOTE5MjQsImV4cCI6MTY2NTQwMTUyNH0.L96ybdKZjUiPLG95huiiaqlmfE5bLIunxqmgGUnOYBY'
-            
+
         }
     };
-    
-   
+
+
   const baseEndpoint = 'https://striveschool-api.herokuapp.com/api/profile/'
   console.log("1 think")
   return async (dispatch, getState)=>{
@@ -97,4 +96,4 @@ export const getFriendsWithThunk = () => {
     } catch (error) {
       console.log(error)
     }finally{console.log("3 thunk");dispatch(setLoading(false));}
-  }} 
+  }}
