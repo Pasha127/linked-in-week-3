@@ -1,4 +1,5 @@
 import { Col, Container, Row, Card} from "react-bootstrap"
+import HeaderProfile from "./HeaderProfile"
 
 
 const Profile = () => {
@@ -8,9 +9,7 @@ return (
       <Container>
             <Row>
                   <Col md={8}>
-                        <Card className="mt-4"style={{ width: '46rem', borderRadius: "12px", height: "480px" }}>
-                   
-                        </Card>
+                        <HeaderProfile />
 
                         <Card className="mt-3"style={{ width: '46rem', borderRadius: "12px", height: "350px" }}>
                         </Card>

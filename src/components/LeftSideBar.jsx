@@ -62,7 +62,7 @@ const navigate = useNavigate();
             <div className="d-flex justify-content-between">
               <div className="text-muted mr-5">Connections</div>
               <div className="font-weight-bold pl-4"
-                style={{ color: "blue", marginRight: "20px"}}>500 +
+                style={{ color: "#0b65c2", marginRight: "20px"}}>500 +
               </div>
             </div>
           </div>
