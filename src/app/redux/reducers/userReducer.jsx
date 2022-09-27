@@ -22,7 +22,7 @@ const userReducer = (state = initialState.user, action) => {
       case GET_FRIENDS:
         return {
           ...state,
-          friends: {}          
+          friends: action.payload          
         };       
       
       default:

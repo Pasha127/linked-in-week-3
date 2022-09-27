@@ -10,7 +10,7 @@ const mapStateToProps = state => {
   return {
     loadState: state.logic.loading,
     currentUser: state.user.activeUser,
-   friendList: state.user.friends
+    friendList: state.user.friends
   };
 };
 const mapDispatchToProps = dispatch => {
@@ -39,11 +39,11 @@ const RightSideBar = (props) => {
               </span>
 
               <div className="pl-2">
-                {/* {props.friendList&&props.friendList.map((friend, index) => 
+                 {props.friendList&&props.friendList.map((friend, index) => 
                 <Col key={index}>
                   <RightSideBarFriends friend={friend}/>
                 </Col>
-                 )} */}
+                 )} 
                 <div className="reccomentations d-flex align-items-center mb-3 ml-2">
                   <span className="font-weight-bold " style={{color: "gray", fontSize: "14px"}}>
                     View all recommendations
