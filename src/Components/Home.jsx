@@ -44,7 +44,9 @@ return(
       <LeftDownSideBar/>
     </Col>
     <Col xs={12} md={6} lg={6} style={{ height: "100%" }}>
+     <div className="border-bottom">
      <AddPost />
+     </div>
     </Col>
     <Col md={3}>
       <RightSideBar />
