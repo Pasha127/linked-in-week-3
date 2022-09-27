@@ -1,3 +1,7 @@
+
+#root{
+  background-color:  #f3f2ef;
+}
 .App {
   text-align: center;
 }
@@ -81,4 +85,7 @@ div.spinner-border{
 }
 .interactionButtons *{
   font-size: 16pt;
+}
+.footerCard{
+  background-color: f3f2ef;
 }
