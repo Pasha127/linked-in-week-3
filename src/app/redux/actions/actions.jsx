@@ -5,6 +5,7 @@ export const UNLIKE = "UNLIKE";
 export  const SIGN_UP = "SIGN_UP";
 export  const SIGN_IN = "SIGN_IN";
 export  const SIGN_OUT = "SIGN_OUT";
+export  const GET_FRIENDS = "GET_FRIENDS";
 
 export const setLoading =isLoading =>({
     type:LOADING,
@@ -34,6 +35,10 @@ export const setSignOut =person =>({
     type:SIGN_OUT,
     payload: person
   });
+export const setFriends =people =>({
+    type: GET_FRIENDS,
+    payload: people
+  });
   
 export const handleFetchWithThunk = (id) => {
 
@@ -56,6 +61,35 @@ export const handleFetchWithThunk = (id) => {
       if (response.ok) {
         const  data  = await response.json()
         dispatch(setSignIn(data))
+       console.log("thick n THunky",data);
+      } else {
+        alert('Error fetching results')
+      }
+    } catch (error) {
+      console.log(error)
+    }finally{console.log("3 thunk");dispatch(setLoading(false));}
+  }} 
+export const getFriendsWithThunk = () => {
+
+    const options = {
+        method: 'GET',
+        headers: {
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMxOGRiNDc2NTM5YzAwMTViNWNkNmEiLCJpYXQiOjE2NjQxOTE5MjQsImV4cCI6MTY2NTQwMTUyNH0.L96ybdKZjUiPLG95huiiaqlmfE5bLIunxqmgGUnOYBY'
+            
+        }
+    };
+    
+   
+  const baseEndpoint = 'https://striveschool-api.herokuapp.com/api/profile/'
+  console.log("1 think")
+  return async (dispatch, getState)=>{
+    try {
+      console.log("2 thank",baseEndpoint)
+      dispatch(setLoading(true));
+      const response = await fetch(baseEndpoint, options);
+      if (response.ok) {
+        const  data  = await response.json()
+        dispatch(setFriends(data))
        console.log("thick n THunky",data);
       } else {
         alert('Error fetching results')

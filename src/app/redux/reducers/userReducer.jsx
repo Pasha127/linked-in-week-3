@@ -1,5 +1,5 @@
 import { initialState } from "../store/store";
-import { SIGN_UP, SIGN_IN, SIGN_OUT } from "../actions/actions";
+import { SIGN_UP, SIGN_IN, SIGN_OUT, GET_FRIENDS } from "../actions/actions";
 const userReducer = (state = initialState.user, action) => {
     switch (action.type) {
       case SIGN_UP:
@@ -17,6 +17,12 @@ const userReducer = (state = initialState.user, action) => {
         return {
           ...state,
           activeUser: {}          
+        };       
+      
+      case GET_FRIENDS:
+        return {
+          ...state,
+          friends: {}          
         };       
       
       default:

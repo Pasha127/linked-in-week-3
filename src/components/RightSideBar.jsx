@@ -2,11 +2,32 @@ import { Button, Card, Container, Row, Image} from "react-bootstrap";
 import { Plus } from "react-bootstrap-icons";
 import { ArrowRight } from "react-bootstrap-icons";
 import { InfoSquareFill } from "react-bootstrap-icons";
+import { getFriendsWithThunk } from "../app/redux/actions/actions";
+import { useEffect } from "react";
+import { connect } from "react-redux";
 
+const mapStateToProps = state => {
+  return {
+  loadState: state.logicRoot.logic.loading,
+  currentUser: state.userRoot.user.activeUser,
+  friendList: state.userRoot.user.friends
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    getFriends: people => {
+      dispatch(getFriendsWithThunk());
+    },
+  };  
+};
+const RightSideBar = (props) => {
 
-const RightSideBar = () => {
+  useEffect(()=>{
+    props.getFriends()
+},[]) 
   return (
     <>
+    {console.log("so many friends!",props.friendList)}
       <Container>
         <Row>
         <Card className="mt-4"style={{ width: '19rem', borderRadius: "12px" }}>
@@ -22,7 +43,7 @@ const RightSideBar = () => {
                   style={{width: "100px"}}
                   roundedCircle />
                     <div className="profile-details ml-2 mt-2">
-                      <div className="text-left font-weight-bold">Simona</div>
+                      <div className="text-left font-weight-bold">{props.friendList[0].name}</div>
                       <div className="profile-title" style={{fontSize: "12px"}}>Epicode Student</div>
                       <div className="profile-message">
                         <Button
@@ -90,4 +111,4 @@ const RightSideBar = () => {
   );
 };
 
-export default RightSideBar;
+export default connect(mapStateToProps, mapDispatchToProps)(RightSideBar);
