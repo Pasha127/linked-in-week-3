@@ -62,3 +62,8 @@ div.spinner-border{
   transform: translateX(-4.65rem);
 
 }
+.navPic{
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
