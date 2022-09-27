@@ -90,7 +90,7 @@ export const getFriendsWithThunk = () => {
       if (response.ok) {
         const  data  = await response.json()
         dispatch(setFriends(data))
-       console.log("thick n THunky",data);
+       console.log("so manyfriends!",data);
       } else {
         alert('Error fetching results')
       }

@@ -13,19 +13,19 @@ const LeftDownSideBar = () => {
             </div>
             <div className="recent-divone">
               <div className="fontSizeTagSection d-flex align-items-baseline recentTags">
-              <i class="bi bi-calendar"></i>
+              <i className="bi bi-calendar"></i>
                 <div className="ml-2" style={{ fontSize: "13px" }}>
                    Front End Developer Group
                 </div>
               </div>
               <div className="fontSizeTagSection d-flex align-items-baseline recentTags">
-              <i class="bi bi-calendar"></i>
+              <i className="bi bi-calendar"></i>
                 <div className="ml-2" style={{ fontSize: "13px" }}>
                   Full Stack Development
                 </div>
               </div>
               <div className="fontSizeTagSection d-flex align-items-baseline recentTags">
-              <i class="bi bi-calendar"></i>
+              <i className="bi bi-calendar"></i>
                 <div className="ml-2"style={{ fontSize: "13px" }}>
                   IT Designer session
                   </div>
