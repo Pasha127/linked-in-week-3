@@ -1,4 +1,4 @@
-import { Navbar,Container, Nav, FormControl, Form } from "react-bootstrap"
+import { Navbar,Container, Nav, FormControl, Form, Image } from "react-bootstrap"
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "../css/NavBar.css"
 import { handleFetchWithThunk } from "../app/redux/actions/actions";
@@ -17,8 +17,6 @@ const mapDispatchToProps = dispatch => {
     getFetch: person => {
       dispatch(handleFetchWithThunk(person));
     },
-
-    
   };  
 };
 const NavBar =(props) => {
@@ -93,15 +91,15 @@ return (<>
           <Nav.Link
              className="d-flex flex-column align-items-center pr-4"
              href="#home" style={{width: "90px"}}>
-              <img className="navPic" src={props.currentUser.image}/>
-            <span className="d-none d-md-inline-block mt-3" style={{fontSize: "12px"}}>{props.currentUser.name}</span>
+              <Image className="navPic mt-1" src={props.currentUser.image}/>
+            <span className="d-none d-md-inline-block" style={{fontSize: "12px"}}>{props.currentUser.name}</span>
           </Nav.Link>
 
 
           <Nav.Link
              className="d-flex flex-column align-items-center "
              href="" style={{width: "90px"}}>
-            <i className="icon6 bi bi-grid-3x3-gap-fill"  style={{fontSize: "20px"}}></i>
+            <i className="icon6 bi bi-grid-3x3-gap-fill" style={{fontSize: "20px"}}></i>
             <span className="d-none d-md-inline-block mt-n1" style={{fontSize: "12px"}}>Work</span>
           </Nav.Link>
           <Nav.Link
