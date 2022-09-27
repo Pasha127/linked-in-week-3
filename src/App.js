@@ -9,6 +9,7 @@ import LeftDownSideBar from './components/LeftDownSideBar';
 
 import FooterRightSide from './components/FooterRightSide';
 import AddPost from './components/AddPost';
+import LeftSideBar from './components/LeftSideBar';
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
     <Container>
       <Row>
       <Col>
+      <AddPost />
+      <LeftSideBar />
       <LeftDownSideBar/>
       <FooterRightSide/>
        </Col>
