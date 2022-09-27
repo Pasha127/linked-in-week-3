@@ -69,3 +69,16 @@ div.spinner-border{
   width: 30px;
   border-radius: 50%;
 }
+.postHeader{
+  margin-top: 15px;
+  margin-bottom: 0;
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+}
+.likeButton{
+    transform: rotateY(180deg);
+}
+.interactionButtons *{
+  font-size: 16pt;
+}
