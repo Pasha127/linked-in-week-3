@@ -4,12 +4,16 @@ import './App.css';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import Home from './Components/Home';
 import NavBar from "./Components/NavBar"
+import Profile from './Components/Profile';
+
 function App() {
+
   return (
     <BrowserRouter>
     <div><NavBar/></div>
       <Routes>
         <Route path="/" element={<Home/>} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
   );
