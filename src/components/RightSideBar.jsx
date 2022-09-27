@@ -8,9 +8,9 @@ import { connect } from "react-redux";
 
 const mapStateToProps = state => {
   return {
-  loadState: state.logicRoot.logic.loading,
-  currentUser: state.userRoot.user.activeUser,
-  friendList: state.userRoot.user.friends
+  loadState: state.logic.loading,
+  currentUser: state.user.activeUser,
+  friendList: state.user.friends
   };
 };
 const mapDispatchToProps = dispatch => {
@@ -43,7 +43,7 @@ const RightSideBar = (props) => {
                   style={{width: "100px"}}
                   roundedCircle />
                     <div className="profile-details ml-2 mt-2">
-                      <div className="text-left font-weight-bold">{props.friendList[0].name}</div>
+                      {/* <div className="text-left font-weight-bold">{props.friendList[0].name}</div> */}
                       <div className="profile-title" style={{fontSize: "12px"}}>Epicode Student</div>
                       <div className="profile-message">
                         <Button

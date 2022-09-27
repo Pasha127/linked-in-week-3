@@ -14,7 +14,7 @@ import LeftDownSideBar from "./LeftDownSideBar";
 
 const mapStateToProps = state => {
     return {
-    loadState: state.logicRoot.logic.loading
+    loadState: state.logic.loading
     };
   };
   

@@ -7,8 +7,8 @@ import { useNavigate } from "react-router-dom";
 
 const mapStateToProps = state => {
   return {
-  loadState: state.logicRoot.logic.loading,
-  currentUser: state.userRoot.user.activeUser
+  loadState: state.logic.loading,
+  currentUser: state.user.activeUser
   };
 };
 
