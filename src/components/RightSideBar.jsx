@@ -13,6 +13,7 @@ const mapStateToProps = state => {
   friendList: state.user.friends
   };
 };
+
 const mapDispatchToProps = dispatch => {
   return {
     getFriends: people => {
@@ -20,6 +21,7 @@ const mapDispatchToProps = dispatch => {
     },
   };  
 };
+
 const RightSideBar = (props) => {
 
   useEffect(()=>{
@@ -28,6 +30,7 @@ const RightSideBar = (props) => {
   return (
     <>
     {console.log("where my friends at?",props.friendList)}
+
       <Container>
         <Row>
         <Card className="mt-4"style={{ width: '19rem', borderRadius: "12px" }}>
@@ -43,8 +46,10 @@ const RightSideBar = (props) => {
                   style={{width: "100px"}}
                   roundedCircle />
                     <div className="profile-details ml-2 mt-2">
+                      
                       {/* friends&&friends.map((friend)=><FriendComponent friendData={friend}/>)
                       <div className="text-left font-weight-bold">{props.friendList[0].name}</div> */}
+
                       <div className="profile-title" style={{fontSize: "12px"}}>Epicode Student</div>
                       <div className="profile-message">
                         <Button
