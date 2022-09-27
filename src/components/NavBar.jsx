@@ -7,8 +7,8 @@ import { connect } from "react-redux";
 
 const mapStateToProps = state => {
   return {
-  loadState: state.logic.loading,
-  currentUser: state.user.activeUser
+    loadState: state.logic.loading,
+    currentUser: state.user.activeUser
   };
 };
 
