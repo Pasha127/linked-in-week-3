@@ -10,7 +10,7 @@ import AddPost from "./AddPost";
 import Loader from './Loader';
 import LeftSideBar from "./LeftSideBar";
 import LeftDownSideBar from "./LeftDownSideBar";
-
+import NewsFeed from "./NewsFeed";
 
 const mapStateToProps = state => {
     return {
@@ -44,7 +44,10 @@ return(
       <LeftDownSideBar/>
     </Col>
     <Col xs={12} md={6} lg={6} style={{ height: "100%" }}>
+     <div className="border-bottom pb-3">
      <AddPost />
+     </div>
+     <NewsFeed/>
     </Col>
     <Col md={3}>
       <RightSideBar />
