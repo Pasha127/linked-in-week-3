@@ -1,4 +1,4 @@
-import { Col, Container, Row, Card} from "react-bootstrap"
+import { Col, Container, Row, Card, Image} from "react-bootstrap"
 import { connect } from "react-redux";
 import HeaderProfile from "./HeaderProfile"
 import Experiences from "./Experiences";
@@ -36,12 +36,13 @@ return (
                   <Col md={4}>
                         <EditProfile />
 
-                        <Card className="mt-3"style={{ width: '22rem', borderRadius: "12px", height: "230px" }}>
-                              
+                        <Card className="mt-3 pl-2 pr-2" style={{ width: '22rem', borderRadius: "12px", height: "280px"}}>
+                              <Image src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png"
+                              fluid/>                 
                         </Card>
 
                        <PeopleAlsoViewed />
-                       
+
                   </Col>
             </Row>
       </Container>
