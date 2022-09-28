@@ -1,7 +1,32 @@
 import { Image, Button, Card, Form, FormControl} from "react-bootstrap";
+import { connect } from "react-redux";
+import { submitPostsWithThunk } from "../app/redux/actions/actions";
+
+const mapStateToProps = state => {
+  return {
+  loadState: state.logic.loading,
+  postList: state.logic.posts,
+  feed: state.logic.feed
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    sendPost: e => {     
+
+      dispatch(submitPostsWithThunk({"text": "e.target.value"}));
+    }
+  };  
+};
+
+const AddPost = (props) => {
 
 
-const AddPost = () => {
+ /*  useEffect(()=>{
+    props.something?()
+  },[]) 
+ */
+
 return (
      
        <Card className="mt-4"style={{ width: '33rem', borderRadius: "12px" }}>
@@ -9,7 +34,7 @@ return (
             <Image src="https://media.istockphoto.com/vectors/user-avatar-profile-icon-black-vector-illustration-vector-id1209654046?k=20&m=1209654046&s=612x612&w=0&h=Atw7VdjWG8KgyST8AXXJdmBkzn0lvgqyWod9vTb2XoE=" 
                   roundedCircle style={{width: "80px"}}/>  
              <Form className="mt-3">
-              <FormControl
+              <FormControl onSubmit={(e)=>{e.preventDefault();console.log("enter");props.sendPost(e)}}
                 type="text"
                 placeholder="Start a post"
                 className="pl-4"
@@ -45,4 +70,4 @@ return (
 
 
 }
-export default AddPost
+export default connect(mapStateToProps, mapDispatchToProps)(AddPost)
