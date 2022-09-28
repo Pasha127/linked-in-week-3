@@ -68,6 +68,8 @@ export const handleFetchWithThunk = (id) => {
       console.log(error)
     }finally{console.log("3 thunk");dispatch(setLoading(false));}
   }}
+
+  
 export const getFriendsWithThunk = () => {
 
     const options = {

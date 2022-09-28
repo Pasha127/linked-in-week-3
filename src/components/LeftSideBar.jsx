@@ -1,7 +1,5 @@
 import { Container, Col, Image, Row, Card } from "react-bootstrap";
 import "../css/LeftSideBar.css"
-import { handleFetchWithThunk } from "../app/redux/actions/actions";
-import { useEffect } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -12,22 +10,9 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getFetch: person => {
-      dispatch(handleFetchWithThunk(person));
-    },
-  };  
-};
-
 const LeftSideBar = (props) => {
 
 const navigate = useNavigate();
-
-  useEffect(()=>{
-    props.getFetch("me")
-// eslint-disable-next-line react-hooks/exhaustive-deps
-},[]) 
 
  return (
       <Container>
@@ -104,4 +89,4 @@ const navigate = useNavigate();
     </Container>
  )
 }
-export default connect(mapStateToProps, mapDispatchToProps)(LeftSideBar)
+export default connect(mapStateToProps)(LeftSideBar)

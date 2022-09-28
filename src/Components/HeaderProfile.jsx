@@ -1,43 +1,27 @@
-import { Card,Image, Row, Col, Button} from "react-bootstrap"
-import { handleFetchWithThunk } from "../app/redux/actions/actions";
-import { useEffect } from "react";
-import { connect } from "react-redux";
+import { Card,Image, Row, Col, Button, Modal} from "react-bootstrap"
+import { useState } from "react";
 
-
-const mapStateToProps = state => {
-      return {
-      loadState: state.logic.loading,
-      currentUser: state.user.activeUser
-      };
-    };
-    
-    const mapDispatchToProps = dispatch => {
-      return {
-        getFetch: person => {
-          dispatch(handleFetchWithThunk(person));
-        },
-      };  
-    };
 
 const HeaderProfile = (props) => {
      
-      useEffect(()=>{
-            props.getFetch("me")
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        },[]) 
+      const [show, setShow] = useState(false);
+
+      const handleClose = () => setShow(false);
+      const handleShow = () => setShow(true);
+       
 
 return (
-      <Card className="mt-4"style={{ width: '46rem', borderRadius: "12px", height: "530px"}}>
+      <Card className="mt-4"style={{ width: '46rem', borderRadius: "12px", height: "540px"}}>
                   <Image 
                   src="https://media.istockphoto.com/videos/defocused-seamless-loop-background-video-id1016831586?s=640x640"
                   style={{backgroundSize: "cover", height: "200px",  borderRadius: "10px 10px 0 0"}} fluid/>
                    <Image className="ml-5"
-                   src={props.currentUser.image} roundedCircle 
+                   src={props.user.image} roundedCircle 
                    style={{ height: "150px", width: "150px", marginTop: "-100px", border: "5px solid white"}}
                    />
                    <Row>
                          <Col md={8}>
-                         <div className="ml-4 pl-3 font-weight-bold" style={{fontSize: "27px"}}>{props.currentUser.name} {props.currentUser.surname}
+                         <div className="ml-4 pl-3 font-weight-bold" style={{fontSize: "27px"}}>{props.user.name} {props.user.surname}
                          <span className="font-weight-light ml-2" style={{fontSize: "15px"}}>(he/him)</span>
                          </div>
                          </Col>
@@ -46,13 +30,29 @@ return (
                          </Col>
                    </Row>
                    <Row>
-                         <div className="ml-5 pl-2">{props.currentUser.title}</div>
+                         <div className="ml-5 pl-2">{props.user.title}</div>
                    </Row>
                    <Row>
                          
-                         <div className="ml-5 pl-2 font-weight-lighter" style={{fontSize: "15px"}}>{props.currentUser.area}</div>
-                         <div className=" pl-2 font-weight-lighter" style={{fontSize: "15px"}}>Contact info</div>
-                         {/* PUT MODAL BTN */}
+                         <div className="ml-5 pl-2 font-weight-lighter" style={{fontSize: "15px"}}>{props.user.area}</div>
+                         <div className="ml-2" onClick={handleShow}>
+                              <span className="" style={{fontSize: "15px", textDecoration: "underline", color: "#0b65c2"}}>Contact info</span>
+                        </div>
+                         <Modal show={show} onHide={handleClose} className="modal-image">
+                              <Modal.Header closeButton>
+                              <Modal.Title>Contact Info</Modal.Title>
+                              </Modal.Header>
+                              <Modal.Body>
+                              <i className="bi bi-envelope"></i><span className="ml-2 font-weight-bold">Email</span>
+                              <div className="font-weight-bold ml-4" style={{color: "#0b65c2"}}>{props.user.email}</div>
+                              </Modal.Body>
+                              <Modal.Footer>
+                              <Button variant="secondary" onClick={handleClose}>
+                              Close
+                              </Button>
+                              </Modal.Footer>
+                        </Modal>
+
                    </Row>
                    <Row>
                         <div className="font-weight-bold ml-5 pl-2"
@@ -100,4 +100,4 @@ return (
 )
 
 }
-export default connect(mapStateToProps, mapDispatchToProps) (HeaderProfile)
+export default HeaderProfile

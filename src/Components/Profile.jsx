@@ -1,37 +1,84 @@
-import { Col, Container, Row, Card} from "react-bootstrap"
+import { Col, Container, Row, Card } from "react-bootstrap"
 import HeaderProfile from "./HeaderProfile"
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useState } from "react";
+import Experiences from "./Experiences";
+
+const Profile = (props) => {
+   const params = useParams()
+
+   const [state, setState] = useState({
+      loading: false,
+      user: undefined
+   })
 
 
-const Profile = () => {
+   useEffect(() => {
+      fetchUser(params.userId)
+   }, [])
 
-return (
+   const fetchUser = async (id) => {
+      const options = {
+         method: 'GET',
+         headers: {
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMxOGRiNDc2NTM5YzAwMTViNWNkNmEiLCJpYXQiOjE2NjQxOTE5MjQsImV4cCI6MTY2NTQwMTUyNH0.L96ybdKZjUiPLG95huiiaqlmfE5bLIunxqmgGUnOYBY'
+
+         }
+      };
+
+      const baseEndpoint = 'https://striveschool-api.herokuapp.com/api/profile/'
+      console.log("1 fetch user")
+      setState({
+         user: undefined,
+         loading: true
+      })
+      const response = await fetch(baseEndpoint + id, options);
+      if (response.ok) {
+         const data = await response.json()
+         setState({
+            loading: false,
+            user: data
+         })
+         console.log("data: ", data);
+      } else {
+         alert('Error fetching results')
+         setState({
+            loading: false,
+            user: undefined
+         })
+      }
+   }
+
+
+   return (
 
       <Container>
+         {state.user &&
             <Row>
-                  <Col md={8}>
-                        <HeaderProfile />
+               <Col md={8}>
+                  <HeaderProfile user={state.user} />
 
-                        <Card className="mt-3"style={{ width: '46rem', borderRadius: "12px", height: "350px" }}>
-                        </Card>
+                  <Experiences userId={state.user._id} canEdit={false}/>
+               </Col>
 
-                  </Col>
+               <Col md={4}>
+                  <Card className="mt-4" style={{ width: '22rem', borderRadius: "12px", height: "120px" }}>
 
-                  <Col md={4}>
-                        <Card className="mt-4"style={{ width: '22rem', borderRadius: "12px", height: "120px" }}>
+                  </Card>
 
-                        </Card>
+                  <Card className="mt-3" style={{ width: '22rem', borderRadius: "12px", height: "230px" }}>
 
-                        <Card className="mt-3"style={{ width: '22rem', borderRadius: "12px", height: "230px" }}>
-                              
-                        </Card>
+                  </Card>
 
-                        <Card className="mt-3"style={{ width: '22rem', borderRadius: "12px", height: "600px" }}>
-                              
-                        </Card>
-                  </Col>
+                  <Card className="mt-3" style={{ width: '22rem', borderRadius: "12px", height: "600px" }}>
+
+                  </Card>
+               </Col>
             </Row>
+         }
       </Container>
 
-)
+   )
 }
-export default Profile 
+export default Profile
