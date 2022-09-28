@@ -1,9 +1,9 @@
 import { Image, Button, Card, Form, FormControl} from "react-bootstrap";
-import { getPostsWithThunk } from "../app/redux/actions/actions";
+/* import { getPostsWithThunk } from "../app/redux/actions/actions"; */
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { formatDistanceToNow } from 'date-fns'
-const mapStateToProps = state => {
+/* const mapStateToProps = state => {
   return {
   loadState: state.logic.loading,
   currentUser: state.user.activeUser,
@@ -17,12 +17,12 @@ const mapDispatchToProps = dispatch => {
       dispatch(getPostsWithThunk());
     },
   };  
-};
+}; */
 const NewsFeed = (props) => {
   
-  useEffect(()=>{
+  /* useEffect(()=>{
     props.getPosts()
-  },[]) 
+  },[])  */
   return (
      
        <Card className="mt-3"style={{ width: '33rem', borderRadius: "12px" }}>
@@ -30,9 +30,9 @@ const NewsFeed = (props) => {
             <Image src="https://media.istockphoto.com/vectors/user-avatar-profile-icon-black-vector-illustration-vector-id1209654046?k=20&m=1209654046&s=612x612&w=0&h=Atw7VdjWG8KgyST8AXXJdmBkzn0lvgqyWod9vTb2XoE=" 
                   roundedCircle style={{width: "80px"}}/>  
              <div className="postHeader">
-                <h6 className="mb-0 ">{props.postList[0].text}</h6>
-                <p className="text-secondary mb-0">{props.postList[0].username}</p>
-                <p className="text-secondary mt-n1 mb-0">{formatDistanceToNow((new Date(props.postList[0].createdAt)))}</p>
+                <h6 className="mb-0 ">{props.text}</h6>
+                <p className="text-secondary mb-0">{props.username}</p>
+                <p className="text-secondary mt-n1 mb-0">{formatDistanceToNow((new Date(props.createdAt)))}</p>
               </div>            
             </div>
       <div className="mb-2">
@@ -56,4 +56,4 @@ const NewsFeed = (props) => {
 
 
 }
-export default  connect(mapStateToProps, mapDispatchToProps)(NewsFeed)
+export default /*  connect(mapStateToProps, mapDispatchToProps) */(NewsFeed)
