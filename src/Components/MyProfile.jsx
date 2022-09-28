@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import HeaderProfile from "./HeaderProfile"
 import Experiences from "./Experiences";
 import SuggestedMyProfile from "./SuggestedMyProfile";
+import Analytics from "./Analytics";
+import EditProfile from "./EditProfile";
 
 const mapStateToProps = state => {
       return {
@@ -21,16 +23,17 @@ return (
                         <HeaderProfile user={props.currentUser}/>
 
                         <SuggestedMyProfile />
+                  
+                        <Analytics />
                         
 
                         <Experiences userId={props.currentUser._id} canEdit={true}/>
 
+
                   </Col>
 
                   <Col md={4}>
-                        <Card className="mt-4"style={{ width: '22rem', borderRadius: "12px", height: "120px" }}>
-
-                        </Card>
+                        <EditProfile />
 
                         <Card className="mt-3"style={{ width: '22rem', borderRadius: "12px", height: "230px" }}>
                               
