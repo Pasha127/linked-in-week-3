@@ -60,7 +60,9 @@ return(
     hasMore={true || false}
     loader={<div className="loader" key={0}>Loading ...</div>}
 >
-    {props.postList.map((post)=><NewsFeed key={post._id} createdAt={post.createdAt} username={post.username} text={post.text}  />)} 
+    {<div>
+      {props.postList.map((post)=><NewsFeed key={post._id} createdAt={post.createdAt} username={post.username} text={post.text}  />)}
+      </div>} 
 </InfiniteScroll>
      
     </Col>
