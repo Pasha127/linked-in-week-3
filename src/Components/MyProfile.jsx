@@ -8,6 +8,7 @@ import EditProfile from "./EditProfile";
 import PeopleAlsoViewed from "./PeopleAlsoViewed";
 import About from "./About";
 
+
 const mapStateToProps = state => {
       return {
             loadState: state.logic.loading,
@@ -47,6 +48,7 @@ return (
 
                   </Col>
             </Row>
+           
       </Container>
 
 )

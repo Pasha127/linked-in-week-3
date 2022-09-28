@@ -7,6 +7,7 @@ import NavBar from "./Components/NavBar"
 import MyProfile from './Components/MyProfile';
 import Profile from './Components/Profile';
 
+
 function App() {
 
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/profile" element={<MyProfile />} />
         <Route path="/profile/:userId" element={<Profile />} />
       </Routes>
+
     </BrowserRouter>
   );
 }

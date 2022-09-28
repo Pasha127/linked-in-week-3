@@ -7,6 +7,7 @@ import Experiences from "./Experiences";
 import PeopleAlsoViewed from "./PeopleAlsoViewed";
 
 
+
 const Profile = (props) => {
    const params = useParams()
 
@@ -65,14 +66,18 @@ const Profile = (props) => {
                </Col>
 
                <Col md={4}>
-                  <Card className="mt-3 pl-2 pr-2" style={{ width: '22rem', borderRadius: "12px", height: "280px"}}>
+                  <Card className="mt-4 pl-2 pr-2" style={{ width: '22rem', borderRadius: "12px", height: "280px"}}>
                         <Image src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png"
                         fluid/>                
                   </Card>
                   <PeopleAlsoViewed />
                </Col>
+            
             </Row>
+              
+              
          }
+        
       </Container>
 
    )

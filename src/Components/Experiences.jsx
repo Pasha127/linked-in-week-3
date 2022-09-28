@@ -1,12 +1,19 @@
-import { Card, Row, Col, Image,} from "react-bootstrap"
+import { Card, Row, Col, Image, Button, Modal, Form,} from "react-bootstrap"
 import { useState } from "react";
 import { useEffect } from "react";
 
 const Experiences = (props) => {
+
       const [state, setState] = useState({
          loading: false,
          experiences: []
       })
+
+      const [show, setShow] = useState(false);
+    
+
+      const handleClose = () => setShow(false);
+      const handleShow = () => setShow(true);
    
    
       useEffect(() => {
@@ -53,12 +60,81 @@ const Experiences = (props) => {
        
 
 return (
-      <Card className="mt-2"style={{ width: '46rem', borderRadius: "12px", height: "540px"}}>
+      <Card className="mt-2 pb-3 mb-4"style={{ width: '46rem', borderRadius: "12px", minHeight: "120px"}}>
           <Row>
-                        <div className="mt-4 ml-5 font-weight-bold" style={{fontSize: "20px"}}>Experiences</div>
+                        <Col md={11} className="mr-0">
+                            <div className="mt-4 ml-5 font-weight-bold" style={{fontSize: "20px"}}>Experiences</div>
+                        </Col>
+                        <Col md={1} className="mt-2 pl-0">
+                            <Button variant="light" style={{borderRadius: "50px"}}
+                            onClick={handleShow}
+                            >+</Button>
+                        </Col>
+
+                        <Modal show={show} onHide={handleClose}>
+                           <Modal.Header >
+                           <Modal.Title>Add experinces</Modal.Title>
+                           </Modal.Header>
+                           <Modal.Body>
+                           <Form className="w-75">
+                              <Row className="ml-3" >
+                              <p style={{fontSize: "14px"}}>Title</p>
+                              </Row>
+                              <Row className="ml-3 pt-0" style={{marginTop: "-17px"}}>
+                              <Form.Control 
+                                 style={{height: "30px"}}
+                                 type="search"
+                                 onChange=""
+                                 placeholder=""
+                              />
+                              </Row>
+                              <Row className="ml-3 mt-3" >
+                              <p style={{fontSize: "14px"}}>Employment type</p>
+                              </Row>
+                              <Row className="ml-3 pt-0" style={{marginTop: "-17px"}}>
+                              <Form.Control 
+                                 style={{height: "30px"}}
+                                 type="search"
+                                 onChange=""
+                                 placeholder=""
+                              />
+                              </Row>
+                              <Row className="ml-3 mt-3" >
+                              <p style={{fontSize: "14px"}}>Company name</p>
+                              </Row>
+                              <Row className="ml-3 pt-0" style={{marginTop: "-17px"}}>
+                              <Form.Control 
+                                 style={{height: "30px"}}
+                                 type="search"
+                                 onChange=""
+                                 placeholder=""
+                              />
+                              </Row>
+                              <Row className="ml-3 mt-3" >
+                              <p style={{fontSize: "14px"}}>Location</p>
+                              </Row>
+                              <Row className="ml-3 pt-0 mb-3" style={{marginTop: "-17px"}}>
+                              <Form.Control 
+                                 style={{height: "30px"}}
+                                 type="search"
+                                 onChange=""
+                                 placeholder=""
+                              />
+                              </Row>
+                              </Form>
+                            </Modal.Body>
+                             <Modal.Footer>
+                                  <Button variant="primary" style={{borderRadius: "30px", fontWeight: "bold", backgroundColor: "#0b65c2" }} >Save</Button>
+                              </Modal.Footer>
+                          
+                          
+                        </Modal>
+
+
+
           </Row>
             {props.canEdit && 
-                  <div className="ml-5"> experience user
+                  <div className="ml-5"> no experiences yet
                   </div>
             }
             {state.experiences.map((experience, index) => {
@@ -72,6 +148,7 @@ return (
                   <Col md={11}>
                      <div className="ml-4">{experience.company}</div>
                   </Col>
+
 
             </Row>
             </div>
