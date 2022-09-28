@@ -42,9 +42,9 @@ const Home = (props)=>{
 return(
 <>
 {console.log("loading:",props.loadState)}
-<div className="container">
-{props.loadState && <Loader/>}
 <Container>
+{props.loadState && <Loader/>}
+
   <Row>
     <Col xs={12} md={4} lg={3}>
       <LeftSideBar/>
@@ -77,8 +77,6 @@ return(
     </Col>
   </Row>
 </Container>
-</div>
-
 </>
 )
 }

@@ -1,10 +1,10 @@
 import { Col, Container, Row, Card,Image } from "react-bootstrap"
-import HeaderProfile from "./HeaderProfile"
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import Experiences from "./Experiences";
 import PeopleAlsoViewed from "./PeopleAlsoViewed";
+import HeaderProfileFriend from "./HeaderProfileFriend";
 
 
 
@@ -60,7 +60,7 @@ const Profile = (props) => {
          {state.user &&
             <Row>
                <Col md={8}>
-                  <HeaderProfile user={state.user} />
+                  <HeaderProfileFriend user={state.user} />
 
                   <Experiences userId={state.user._id} canEdit={false}/>
                </Col>
