@@ -53,12 +53,12 @@ return (
                                     <i class="bi bi-linkedin" style={{fontSize: "20px"}}></i>
                                     <span className="ml-4 mt-1 font-weight-bold">Your profile</span>
                               </Row>
-                              <Row className="ml-1">
+                                    <div className="font-weight-bold ml-5" style={{color: "#0b65c2", fontSize: "14px"}}>linkedin.com/in/{props.user._id}</div>
+                              <Row className="ml-1 mt-3">
                                     <i className="bi bi-envelope" style={{fontSize: "20px"}}></i>
-                                    <span className="ml-2 mt-1 font-weight-bold">Email</span>
+                                    <span className="ml-4 mt-1 font-weight-bold">Email</span>
                               </Row>
-                             
-                                    <div className="font-weight-bold ml-4" style={{color: "#0b65c2"}}>{props.user.email}</div>
+                                    <div className="font-weight-bold ml-5" style={{color: "#0b65c2", fontSize: "14px"}}>{props.user.email}</div>
                               </Modal.Body>
                               <Modal.Footer>
                               <Button variant="secondary" onClick={handleClose}>

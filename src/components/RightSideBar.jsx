@@ -29,9 +29,8 @@ const RightSideBar = (props) => {
   return (
     <>
     {console.log("so many friends!",props.friendList)}
-      <Container>
-        <Row>
-        <Card className="mt-4"style={{ width: '22rem', borderRadius: "12px" }}>
+     
+        <Card className="mt-4"style={{ width: '18rem', borderRadius: "12px" }}>
             <div className="pt-3">
               <span className="pl-3 pb-3 text d-flex justify-content-between font-weight-bold">
                 Add to your feed 
@@ -57,8 +56,6 @@ const RightSideBar = (props) => {
               
             </div>
          </Card>
-        </Row>
-      </Container>
     </>
   );
 };

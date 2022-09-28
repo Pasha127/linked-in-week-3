@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Container, Row, Col} from "react-bootstrap";
+import { Container, Row, Col, Card,Image} from "react-bootstrap";
 import { connect } from "react-redux";
 import { setSearch } from '../app/redux/actions/actions';
 import FooterRightSide from "./FooterRightSide";
@@ -68,6 +68,10 @@ return(
     </Col>
     <Col md={3}>
       <RightSideBar />
+      <Card className="mt-3 pl-2 pr-2" style={{ width: '18rem', borderRadius: "12px", height: "220px"}}>
+             <Image src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png"
+              fluid/>                 
+      </Card>
       <FooterRightSide />
     </Col>
   </Row>
