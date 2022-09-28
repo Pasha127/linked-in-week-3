@@ -1,3 +1,7 @@
+
+#root{
+  background-color:  #f3f2ef;
+}
 .App {
   text-align: center;
 }
@@ -75,10 +79,21 @@ div.spinner-border{
   display: flex;
   justify-content: left;
   flex-direction: column;
+  overflow: hidden;
+}
+.postHeader h6{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
+  padding-right: 10px;
 }
 .likeButton{
     transform: rotateY(180deg);
 }
 .interactionButtons *{
   font-size: 16pt;
+}
+.card{
+  overflow: hidden;
 }

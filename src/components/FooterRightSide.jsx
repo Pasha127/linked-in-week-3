@@ -4,7 +4,7 @@ import "../css/FooterRightSide.css"
 const FooterRightSide = () => {
 
       return (
-            <Card className="mt-4 pb-4 mb-5"
+            <Card className="mt-4 pb-4 mb-5 footerCard"
             style={{ width: '19rem', borderRadius: "12px", color: "f3f2ee"}}>
             <div className="mainsticky mt-4">
       

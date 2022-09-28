@@ -1,8 +1,6 @@
-/* import { Container, Row, Col, Form,Button } from 'react-bootstrap' */
 import { useEffect } from "react";
 import { Container, Row, Col} from "react-bootstrap";
 import { connect } from "react-redux";
-/* import { Link } from 'react-router-dom'; */
 import { setSearch } from '../app/redux/actions/actions';
 import FooterRightSide from "./FooterRightSide";
 import RightSideBar from "./RightSideBar";
@@ -11,10 +9,13 @@ import Loader from './Loader';
 import LeftSideBar from "./LeftSideBar";
 import LeftDownSideBar from "./LeftDownSideBar";
 import NewsFeed from "./NewsFeed";
-
+import InfiniteScroll from 'react-infinite-scroller';
+import Spinner from 'react-bootstrap/Spinner';
+import { getPostsWithThunk } from "../app/redux/actions/actions";
 const mapStateToProps = state => {
     return {
-    loadState: state.logic.loading
+    loadState: state.logic.loading,
+    postList: state.logic.posts
     };
   };
   
@@ -23,11 +24,16 @@ const mapStateToProps = state => {
       setQuery: query => {
         dispatch(setSearch(query));
       },
-
+      getPosts: people => {
+        dispatch(getPostsWithThunk());
+      }
       
     };  
   };
 const Home = (props)=>{
+  useEffect(()=>{
+    props.getPosts()
+  },[]) 
     useEffect(()=>{
         console.log(props.loadState)
     },[props.loadState]) 
@@ -47,7 +53,18 @@ return(
      <div className="border-bottom pb-3">
      <AddPost />
      </div>
-     <NewsFeed/>
+     <InfiniteScroll
+    pageStart={0}
+    threshold={2}
+    loadMore={<></>}
+    hasMore={true || false}
+    loader={<div className="loader" key={0}>Loading ...</div>}
+>
+    {<div>
+      {props.postList.map((post)=><NewsFeed key={post._id} createdAt={post.createdAt} username={post.username} text={post.text}  />)}
+      </div>} 
+</InfiniteScroll>
+     
     </Col>
     <Col md={3}>
       <RightSideBar />
