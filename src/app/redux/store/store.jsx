@@ -13,7 +13,7 @@ const persistConfig = {
 
 
 export const initialState = {
-  logic: {search:"",liked:[],loading:true, posts: []},
+  logic: {search:"",liked:[],loading:true, posts: [], feed:[]},
   user:{users:[],activeUser:{},friends:[]}
 } 
 //{userReducer:userReducer}

@@ -1,5 +1,5 @@
 import { initialState } from "../store/store";
-import { LOADING,SEARCH, LIKE, UNLIKE, GET_POSTS } from "../actions/actions";
+import { LOADING,SEARCH, LIKE, UNLIKE, GET_POSTS, GET_MORE_POSTS, ADD_TO_FEED } from "../actions/actions";
 const logicReducer = (state = initialState.logic, action) => {
     switch (action.type) {
       case LOADING:
@@ -27,6 +27,16 @@ const logicReducer = (state = initialState.logic, action) => {
         return{
           ...state,
           posts: action.payload
+        }      
+      case GET_MORE_POSTS:
+        return{
+          ...state,
+          posts: [...state.posts, action.payload]
+        }      
+      case ADD_TO_FEED:
+        return{
+          ...state,
+          feed: [...state.feed, action.payload]
         }      
       
       default:
