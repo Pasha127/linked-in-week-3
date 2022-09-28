@@ -1,11 +1,12 @@
 import { initialState } from "../store/store";
 import { LOADING,SEARCH, LIKE, UNLIKE } from "../actions/actions";
-const logicReducer = (state = initialState, action) => {
+const logicReducer = (state = initialState.logic, action) => {
     switch (action.type) {
       case LOADING:
         return {
           ...state,
-          loading: action.payload          
+        
+            loading: action.payload      
         };        
       case SEARCH:
         return {
@@ -15,12 +16,12 @@ const logicReducer = (state = initialState, action) => {
       case LIKE:
         return {
           ...state,
-         liked: [...state.logic.liked, action.payload]          
+         liked: [...state.liked, action.payload]          
         };       
       case UNLIKE:
         return {
           ...state,
-         liked: state.logic.liked.filter((post) => post._id !== action.payload._id)    
+         liked: state.liked.filter((post) => post._id !== action.payload._id)    
         };       
       
       default:
