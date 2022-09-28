@@ -1,9 +1,11 @@
-import { Col, Container, Row, Card } from "react-bootstrap"
+import { Col, Container, Row, Card,Image } from "react-bootstrap"
 import HeaderProfile from "./HeaderProfile"
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import Experiences from "./Experiences";
+import PeopleAlsoViewed from "./PeopleAlsoViewed";
+
 
 const Profile = (props) => {
    const params = useParams()
@@ -63,17 +65,11 @@ const Profile = (props) => {
                </Col>
 
                <Col md={4}>
-                  <Card className="mt-4" style={{ width: '22rem', borderRadius: "12px", height: "120px" }}>
-
+                  <Card className="mt-3 pl-2 pr-2" style={{ width: '22rem', borderRadius: "12px", height: "280px"}}>
+                        <Image src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png"
+                        fluid/>                
                   </Card>
-
-                  <Card className="mt-3" style={{ width: '22rem', borderRadius: "12px", height: "230px" }}>
-
-                  </Card>
-
-                  <Card className="mt-3" style={{ width: '22rem', borderRadius: "12px", height: "600px" }}>
-
-                  </Card>
+                  <PeopleAlsoViewed />
                </Col>
             </Row>
          }

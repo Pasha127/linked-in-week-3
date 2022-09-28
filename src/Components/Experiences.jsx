@@ -1,4 +1,4 @@
-import { Card } from "react-bootstrap"
+import { Card, Row, Col, Image,} from "react-bootstrap"
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -53,12 +53,28 @@ const Experiences = (props) => {
        
 
 return (
-      <Card className="mt-4"style={{ width: '46rem', borderRadius: "12px", height: "540px"}}>
+      <Card className="mt-2"style={{ width: '46rem', borderRadius: "12px", height: "540px"}}>
+          <Row>
+                        <div className="mt-4 ml-5 font-weight-bold" style={{fontSize: "20px"}}>Experiences</div>
+          </Row>
             {props.canEdit && 
-                  <div>EDIT</div>
+                  <div className="ml-5"> experience user
+                  </div>
             }
             {state.experiences.map((experience, index) => {
-                  return <div key={index}>{experience.description}</div>
+                  return <div key={index}>
+            <Row className="mt-3">
+                  <Col md={1} >
+                     <Image className="ml-4" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP3OEVxWnMEGekDEUZA-ScFV4xT6AiDvx12JFU1fL7nA&s"
+                              style={{ width: "50px"}} />
+                     
+                  </Col>
+                  <Col md={11}>
+                     <div className="ml-4">{experience.company}</div>
+                  </Col>
+
+            </Row>
+            </div>
             })}
       </Card>
 )

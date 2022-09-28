@@ -1,4 +1,4 @@
-import { Card, Container, Row, Col} from "react-bootstrap";
+import { Card, Col} from "react-bootstrap";
 import { ArrowRight } from "react-bootstrap-icons";
 import { InfoSquareFill } from "react-bootstrap-icons";
 import { getFriendsWithThunk } from "../app/redux/actions/actions";

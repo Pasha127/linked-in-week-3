@@ -13,6 +13,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import Spinner from 'react-bootstrap/Spinner';
 import { getPostsWithThunk } from "../app/redux/actions/actions";
 import { getMorePostsWithThunk } from "../app/redux/actions/actions";
+
 const mapStateToProps = state => {
     return {
     loadState: state.logic.loading,
