@@ -6,7 +6,7 @@ const Analytics = () => {
       
 
       return (
-            <Card className="mt-4"style={{ width: '46rem', borderRadius: "12px", height: "200px" }}>
+            <Card className="mt-2"style={{ width: '46rem', borderRadius: "12px", height: "200px" }}>
                  <Row>
                         <div className="mt-4 ml-5 font-weight-bold" style={{fontSize: "20px"}}>Analytics</div>
                  </Row>  

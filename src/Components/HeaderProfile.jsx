@@ -1,13 +1,18 @@
-import { Card,Image, Row, Col, Button, Modal} from "react-bootstrap"
+import { Card,Image, Row, Col, Button, Modal, ModalBody} from "react-bootstrap"
 import { useState } from "react";
 
 
 const HeaderProfile = (props) => {
      
       const [show, setShow] = useState(false);
+      const [show2, setShow2] = useState(false);
 
       const handleClose = () => setShow(false);
       const handleShow = () => setShow(true);
+
+      const handleClose2 = () => setShow2(false);
+      const handleShow2 = () => setShow2(true);
+
        
 
 return (
@@ -74,12 +79,49 @@ return (
                         </div>
                    </Row>
                    <Row>
-                   <Button variant="primary" className="ml-5 mt-3" style={{borderRadius: "30px", fontWeight: "bold"}}>
+                   <Button className="ml-5 mt-3" style={{borderRadius: "30px", fontWeight: "bold", backgroundColor: "#0b65c2" }}>
                       Open to
                    </Button>
-                   <Button variant="outline-primary" className="ml-3 mt-3"  style={{borderRadius: "30px", fontWeight: "bold"}}>
+                   <Button  onClick={handleShow2}
+                   className="ml-3 mt-3"  style={{borderRadius: "30px", fontWeight: "bold", border: "1px solid #0b65c2", backgroundColor: "white", color:"#0b65c2"}}>
                         Add profile
                    </Button>
+
+                        <Modal show={show2} onHide={handleClose2} className="modal-image">
+                                    <Modal.Header closeButton>
+                                    <Modal.Title style={{fontSize: "20px"}}>Add to profile</Modal.Title>
+                                    </Modal.Header>
+                                    <Modal.Body>
+                                          <div className="mb-3" style={{fontSize: "18px"}}>Core</div>
+                                          <span className="mt-1" style={{fontSize: "14px"}}>
+                                                Start with the basics. Filling out these sections will help you be discovered by recruiters and people you may know
+                                          </span>
+                                          <span className="mt-1" style={{fontSize: "16px"}}>
+                                                Add education
+                                          </span>
+                                    <hr className="" style={{width: "100%"}}/>
+                                          <span className="mt-1" style={{fontSize: "16px"}}>
+                                                Add position
+                                          </span>
+                                    <hr className="" style={{width: "100%"}}/>
+                                          <span className="mt-1" style={{fontSize: "16px"}}>
+                                                Add career break
+                                          </span>
+                                    <hr className="" style={{width: "100%"}}/>
+                                          <span className="mt-1" style={{fontSize: "16px"}}>
+                                                Add skills
+                                          </span>
+                                    <hr className="w-100 mx-0 p-0"/>
+                      
+                                    <div className="mb-3" style={{fontSize: "18px"}}>Recomemended</div>
+                                 
+                                    <hr className="w-100 mx-0"/>
+                                    <div className="mb-3" style={{fontSize: "18px"}}>Additional</div>
+                                    </Modal.Body>
+                         
+                        </Modal>
+
+
                    <Button variant="outline-secondary" className="ml-3 mt-3" style={{borderRadius: "30px", fontWeight: "bold"}}>
                         More
                    </Button>

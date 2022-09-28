@@ -27,7 +27,7 @@ const PeopleAlsoViewed = (props) => {
       
 
       return (
-            <Card className="mt-3"style={{ width: '22rem', borderRadius: "12px", height: "600px" }}>
+            <Card className="mt-2"style={{ width: '22rem', borderRadius: "12px", height: "600px" }}>
                   <Row>
                         <div className="mt-3 ml-4 pl-3 font-weight-bold" style={{fontSize: "17px"}}>People also viewed</div>     
                  </Row>  

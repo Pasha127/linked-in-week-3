@@ -12,6 +12,7 @@ import NewsFeed from "./NewsFeed";
 import InfiniteScroll from 'react-infinite-scroller';
 import Spinner from 'react-bootstrap/Spinner';
 import { getPostsWithThunk } from "../app/redux/actions/actions";
+
 const mapStateToProps = state => {
     return {
     loadState: state.logic.loading,
