@@ -5,6 +5,7 @@ import Experiences from "./Experiences";
 import SuggestedMyProfile from "./SuggestedMyProfile";
 import Analytics from "./Analytics";
 import EditProfile from "./EditProfile";
+import PeopleAlsoViewed from "./PeopleAlsoViewed";
 
 const mapStateToProps = state => {
       return {
@@ -39,9 +40,8 @@ return (
                               
                         </Card>
 
-                        <Card className="mt-3"style={{ width: '22rem', borderRadius: "12px", height: "600px" }}>
-                              
-                        </Card>
+                       <PeopleAlsoViewed />
+                       
                   </Col>
             </Row>
       </Container>
