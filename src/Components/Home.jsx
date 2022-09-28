@@ -40,11 +40,19 @@ const mapStateToProps = state => {
     };  
   };
 const Home = (props)=>{  
-  let indexA = 0;
-  let indexB = 1;
+  
+
+function addMoreToFeed(){
+  console.log("add more to feed fires");
+  props.addToFeed(props.postList.slice(props.feed.length, props.feed.length+15))
+}
+
   useEffect(()=>{
     props.getAllPosts()
   },[]) 
+  useEffect(()=>{
+    console.log("boost")
+  },[props.feed]) 
 /*     useEffect(()=>{
         console.log(props.loadState)
     },[props.loadState])  */
@@ -66,13 +74,7 @@ return(
      </div>
      <InfiniteScroll
         dataLength={props.feed.length} 
-        next={()=>{
-          if(props.postlist){
-           (props.addToFeed(props.postList.slice(indexA,indexB)))
-           indexA =indexA+2
-           indexB =indexB+2
-          }
-        }}
+        next={addMoreToFeed}
         hasMore={true}
         loader={<div className="d-flex justify-content-center overflow-hidden">
           <h4>Loading...</h4>
@@ -85,7 +87,7 @@ return(
 
       >
           {<div>
-            {props.postList.map((post, index)=><NewsFeed key={index} createdAt={post.createdAt} username={post.username} text={post.text}  />)}
+            {props.feed.map((post, index)=><NewsFeed key={index} createdAt={post.createdAt} username={post.username} text={post.text}  />)}
             </div>}   
       </InfiniteScroll>
      
