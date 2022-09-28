@@ -26,7 +26,12 @@ return (
                          </div>
                          </Col>
                          <Col md={4}>
-                          <div className="mt-3">current company</div>     
+                          <div className="mt-3">
+                          <Image 
+                              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP3OEVxWnMEGekDEUZA-ScFV4xT6AiDvx12JFU1fL7nA&s"
+                              style={{ width: "30px"}} />
+                             <span className="ml-2 font-weight-bold">Epicode Global</span>
+                          </div>     
                          </Col>
                    </Row>
                    <Row>
