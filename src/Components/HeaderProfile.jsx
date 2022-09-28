@@ -40,11 +40,20 @@ return (
                         </div>
                          <Modal show={show} onHide={handleClose} className="modal-image">
                               <Modal.Header closeButton>
-                              <Modal.Title>Contact Info</Modal.Title>
+                              <Modal.Title style={{fontSize: "20px"}}>{props.user.name} {props.user.surname}</Modal.Title>
                               </Modal.Header>
                               <Modal.Body>
-                              <i className="bi bi-envelope"></i><span className="ml-2 font-weight-bold">Email</span>
-                              <div className="font-weight-bold ml-4" style={{color: "#0b65c2"}}>{props.user.email}</div>
+                                    <div className="mb-3" style={{fontSize: "20px"}}>Contact Info</div>
+                              <Row className="ml-1">
+                                    <i class="bi bi-linkedin" style={{fontSize: "20px"}}></i>
+                                    <span className="ml-4 mt-1 font-weight-bold">Your profile</span>
+                              </Row>
+                              <Row className="ml-1">
+                                    <i className="bi bi-envelope" style={{fontSize: "20px"}}></i>
+                                    <span className="ml-2 mt-1 font-weight-bold">Email</span>
+                              </Row>
+                             
+                                    <div className="font-weight-bold ml-4" style={{color: "#0b65c2"}}>{props.user.email}</div>
                               </Modal.Body>
                               <Modal.Footer>
                               <Button variant="secondary" onClick={handleClose}>
