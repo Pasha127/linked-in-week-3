@@ -75,7 +75,7 @@ div.spinner-border{
 }
 .postHeader{
   margin-top: 15px;
-  margin-bottom: 0;
+  margin-bottom: 10px;
   display: flex;
   justify-content: left;
   flex-direction: column;
@@ -87,6 +87,7 @@ div.spinner-border{
   text-overflow: ellipsis;
   display: block;
   padding-right: 10px;
+  max-width: 530px;
 }
 .likeButton{
     transform: rotateY(180deg);
@@ -96,4 +97,25 @@ div.spinner-border{
 }
 .card{
   overflow: hidden;
+}
+.profilePicStyle{
+  height: 55px;
+  width: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-top: 15px;
+  margin-right: 15px;
+  
+}
+.profImg{
+  width: 55px;
+}
+.postImg{
+  width: 530px;
+}
+.postCard{
+  max-width: 530px;
 }

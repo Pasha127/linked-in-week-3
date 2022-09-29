@@ -26,24 +26,24 @@ const NewsFeed = (props) => {
   },[])  */
   return (
      
-       <Card className="mt-3"style={{ width: '33rem', borderRadius: "12px" }}>
+       <Card className="mt-3 postCard"style={{ width: '33rem', borderRadius: "12px" }}>
             <div className="d-flex ml-3">
+              <div className="profilePicStyle">
            {props.user?.image ?   
-            <CloudImage  cloudName="dmqsfltrf" publicId={props.user.image}
-                  roundedCircle style={{width: "80px"}}/> :
-                  <Image src="https://media.istockphoto.com/vectors/user-avatar-profile-icon-black-vector-illustration-vector-id1209654046?k=20&m=1209654046&s=612x612&w=0&h=Atw7VdjWG8KgyST8AXXJdmBkzn0lvgqyWod9vTb2XoE=" 
-                  roundedCircle style={{width: "80px"}}/> }
+            <img className="profImg" src={props.user.image} alt="profile pic"/> :
+                  <img src="https://media.istockphoto.com/vectors/user-avatar-profile-icon-black-vector-illustration-vector-id1209654046?k=20&m=1209654046&s=612x612&w=0&h=Atw7VdjWG8KgyST8AXXJdmBkzn0lvgqyWod9vTb2XoE=" alt="prof pic"/> }
+              </div>
              <div className="postHeader">
                 <h6 className="mb-0 ">{props.text}</h6>
                 <p className="text-secondary mb-0">{props.username}</p>
                 <p className="text-secondary mt-n1 mb-0">{formatDistanceToNow(new Date(props.createdAt))}</p>
               </div> 
-              <i className="bi bi-three-dots"></i>          
+              <i className="bi bi-three-dots ml-auto mr-3 mt-2"></i>          
             </div>
       <div className="mb-2">
         {props.image ?
-        <CloudImage cloudName="dmqsfltrf" publicId={props.image}/> :
-       <Image src= "http://placekitten.com/528/400"/> }
+        <img className="postImg" src={props.image} alt="post "/> :
+       <img src= "http://placekitten.com/528/400" alt="post"/> }
       </div>
       <div className="interactionsContainer mb-2">
           <div> <i className="bi bi-hand-thumbs-up ml-4"></i></div>

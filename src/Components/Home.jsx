@@ -87,7 +87,7 @@ return(
 
       >
           {<div>
-            {props.feed.map((post, index)=><NewsFeed key={index} createdAt={post.createdAt} username={post.username} text={post.text}  />)}
+            {props.feed.map((post, index)=><NewsFeed key={index} user={post.user} image={post.image} createdAt={post.createdAt} username={post.username} text={post.text}  />)}
             </div>}   
       </InfiniteScroll>
      
@@ -95,7 +95,7 @@ return(
     <Col md={3}>
       <RightSideBar />
       <Card className="mt-3 pl-2 pr-2" style={{ width: '18rem', borderRadius: "12px", height: "220px"}}>
-             <Image src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png"
+             <Image src="https://imgur.com/a/OBpgT3Q"
               fluid/>                 
       </Card>
       <FooterRightSide />
