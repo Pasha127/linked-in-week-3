@@ -54,7 +54,7 @@ return (
                               <Modal.Body>
                                     <div className="mb-3" style={{fontSize: "20px"}}>Contact Info</div>
                               <Row className="ml-1">
-                                    <i class="bi bi-linkedin" style={{fontSize: "20px"}}></i>
+                                    <i className="bi bi-linkedin" style={{fontSize: "20px"}}></i>
                                     <span className="ml-4 mt-1 font-weight-bold">Your profile</span>
                               </Row>
                                     <div className="font-weight-bold ml-5" style={{color: "#0b65c2", fontSize: "14px"}}>linkedin.com/in/{props.user._id}</div>

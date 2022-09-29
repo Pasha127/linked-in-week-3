@@ -1,17 +1,25 @@
-import { Card, Row, Col, Image, Button, Modal, Form,} from "react-bootstrap"
+import { Card, Row, Col, Button, Modal, Form,} from "react-bootstrap"
 import { useState } from "react";
 import { useEffect } from "react";
+import ExperiencesList from "./ExperiencesList";
 
 const Experiences = (props) => {
 
-      const [state, setState] = useState({
-         loading: false,
-         experiences: []
-      })
+      const [loading, setLoading] = useState(true)
+      const [experiences, setExperiences] = useState([])
+      const [newExperience, setNewExperiences] = useState({})
 
+
+      const inputChange = (e) => {
+         setNewExperiences({
+            
+                 ...newExperience,
+                 [e.target.name]: e.target.value
+             
+         })
+     }
+      
       const [show, setShow] = useState(false);
-    
-
       const handleClose = () => setShow(false);
       const handleShow = () => setShow(true);
    
@@ -19,11 +27,15 @@ const Experiences = (props) => {
       useEffect(() => {
          fetchExperiences(props.userId)
       }, [])
-   
-
+      
       useEffect(() => {
-            console.log("State: ", state)
-      })    
+         if(loading){fetchExperiences(props.userId)}
+         
+      }, [loading])
+
+      // useEffect(() => {
+      //       console.log("State: ", state)
+      // })    
          
          
       const fetchExperiences = async (id) => {
@@ -37,121 +49,157 @@ const Experiences = (props) => {
    
          const baseEndpoint = `https://striveschool-api.herokuapp.com/api/profile/${id}/experiences`
          console.log("1 fetch user")
-         setState({
-            experiences: [],
-            loading: true
-         })
          const response = await fetch(baseEndpoint, options);
          if (response.ok) {
             const data = await response.json()
-            setState({
-               loading: false,
-               experiences: data
-            })
-            console.log("data: ", data);
+            setLoading(
+               false
+            )
+            setExperiences(
+               data
+            )
+            console.log("experiences:", data);
          } else {
             alert('Error fetching results')
-            setState({
-               loading: false,
-               experiences: []
-            })
+            setLoading(
+               false
+            )
          }
       }
-       
+
+      const addExperiences = async (event) => {
+         event.preventDefault()
+         const options = {
+            method: 'POST',
+            body: JSON.stringify(newExperience),
+            headers: new Headers({
+               "Content-type": "application/json",
+               Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMxOGRiNDc2NTM5YzAwMTViNWNkNmEiLCJpYXQiOjE2NjQxOTE5MjQsImV4cCI6MTY2NTQwMTUyNH0.L96ybdKZjUiPLG95huiiaqlmfE5bLIunxqmgGUnOYBY'
+            })
+         };
+         console.log("2 fetch exp:")
+         const baseEndpoint = `https://striveschool-api.herokuapp.com/api/profile/${props.userId}/experiences`
+         const response = await fetch(baseEndpoint, options);
+         if (response.ok) {
+            const data = await response.json()
+            console.log("data exp:", data)
+            setNewExperiences(
+               {
+                  area: "",
+                  company: "",
+                  role: "",
+                  startDate: "",
+                  endDate: "",
+                  description: "",
+              }
+            )
+              setLoading(true)
+         } else {
+            alert('Error fetching results add exp')
+         }
+      }
+
 
 return (
       <Card className="mt-2 pb-3 mb-4"style={{ width: '46rem', borderRadius: "12px", minHeight: "120px"}}>
-          <Row>
-                        <Col md={11} className="mr-0">
+     
+         <Row md={11} className="mr-0">
                             <div className="mt-4 ml-5 font-weight-bold" style={{fontSize: "20px"}}>Experiences</div>
-                        </Col>
-                        <Col md={1} className="mt-2 pl-0">
+         </Row>
+         <Row>
+                        <Col md={12} className="mt-2">
                             <Button variant="light" style={{borderRadius: "50px"}}
                             onClick={handleShow}
                             >+</Button>
                         </Col>
 
                         <Modal show={show} onHide={handleClose}>
-                           <Modal.Header >
+                           <Modal.Header closeButton>
                            <Modal.Title>Add experinces</Modal.Title>
                            </Modal.Header>
                            <Modal.Body>
-                           <Form className="w-75">
-                              <Row className="ml-3" >
-                              <p style={{fontSize: "14px"}}>Title</p>
-                              </Row>
-                              <Row className="ml-3 pt-0" style={{marginTop: "-17px"}}>
+                           <Form className="w-75" 
+                               onSubmit={(event) => addExperiences(event)}>
+                              <Form.Label className="text-muted">Title</Form.Label>
                               <Form.Control 
                                  style={{height: "30px"}}
-                                 type="search"
-                                 onChange=""
+                                 name="role" 
+                                 type="text"
                                  placeholder=""
+                                 value={newExperience?.role} 
+                                 onChange={(e) => {inputChange(e)}} 
                               />
-                              </Row>
-                              <Row className="ml-3 mt-3" >
-                              <p style={{fontSize: "14px"}}>Employment type</p>
-                              </Row>
-                              <Row className="ml-3 pt-0" style={{marginTop: "-17px"}}>
+                             
+                              <Form.Label className="text-muted">Company</Form.Label>
                               <Form.Control 
                                  style={{height: "30px"}}
-                                 type="search"
-                                 onChange=""
+                                 name="company" 
+                                 type="text"
                                  placeholder=""
+                                 value={newExperience?.company} 
+                                 onChange={(e) => { ; inputChange(e)}} 
                               />
-                              </Row>
-                              <Row className="ml-3 mt-3" >
-                              <p style={{fontSize: "14px"}}>Company name</p>
-                              </Row>
-                              <Row className="ml-3 pt-0" style={{marginTop: "-17px"}}>
+                              <Form.Label className="text-muted">Area</Form.Label>
                               <Form.Control 
                                  style={{height: "30px"}}
-                                 type="search"
-                                 onChange=""
+                                 name="area" 
+                                 type="text"
                                  placeholder=""
+                                 value={newExperience?.area} 
+                                 onChange={(e) => {  inputChange(e)}} 
                               />
-                              </Row>
-                              <Row className="ml-3 mt-3" >
-                              <p style={{fontSize: "14px"}}>Location</p>
-                              </Row>
-                              <Row className="ml-3 pt-0 mb-3" style={{marginTop: "-17px"}}>
+                               <Form.Label className="text-muted">Des</Form.Label>
                               <Form.Control 
                                  style={{height: "30px"}}
-                                 type="search"
-                                 onChange=""
+                                 name="description" 
+                                 type="text"
                                  placeholder=""
+                                 value={newExperience?.description} 
+                                 onChange={(e) => {  inputChange(e)}} 
                               />
-                              </Row>
-                              </Form>
+                              <Form.Row>
+                                    <Form.Group as={Col}>
+                                       <Form.Label className="text-muted">Start Date</Form.Label>
+                                       <Form.Control 
+                                        name="startDate" 
+                                        type="date" 
+                                        value={newExperience?.startDate} 
+                                        onChange={(e) => { inputChange(e)}} 
+                                        />
+                                    </Form.Group>
+                                    <Form.Group as={Col}>
+                                       <Form.Label className="text-muted">End Date</Form.Label>
+                                       <Form.Control
+                                       name="endDate" 
+                                       type="date" 
+                                       value={newExperience?.endDate ? newExperience?.endDate : ''} 
+                                       onChange={(e) => { inputChange(e)}} 
+                                       />
+                                    </Form.Group>
+                            </Form.Row>
+                            <Button variant="primary" 
+                                  type="submit" 
+                                  style={{borderRadius: "30px", fontWeight: "bold", backgroundColor: "#0b65c2" }} >
+                                  Add
+                             </Button>
+                           </Form>
                             </Modal.Body>
                              <Modal.Footer>
-                                  <Button variant="primary" style={{borderRadius: "30px", fontWeight: "bold", backgroundColor: "#0b65c2" }} >Save</Button>
-                              </Modal.Footer>
-                          
-                          
+                                 <Button variant="secondary" type="submit" onClick={handleClose}>
+                                 Close
+                                 </Button>
+                              </Modal.Footer>     
                         </Modal>
 
 
 
           </Row>
-            {props.canEdit && 
-                  <div className="ml-5"> no experiences yet
-                  </div>
-            }
-            {state.experiences.map((experience, index) => {
-                  return <div key={index}>
-            <Row className="mt-3">
-                  <Col md={1} >
-                     <Image className="ml-4" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP3OEVxWnMEGekDEUZA-ScFV4xT6AiDvx12JFU1fL7nA&s"
-                              style={{ width: "50px"}} />
-                     
+               
+            {experiences&&
+             experiences.map((experience, index) => {
+                  return <Col key={index}>
+                  <ExperiencesList experience={experience} fetchExperiences={fetchExperiences}/>
                   </Col>
-                  <Col md={11}>
-                     <div className="ml-4">{experience.company}</div>
-                  </Col>
-
-
-            </Row>
-            </div>
             })}
       </Card>
 )

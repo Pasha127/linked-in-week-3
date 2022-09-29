@@ -42,7 +42,7 @@ const PeopleAlsoViewed = (props) => {
                   <hr className="" style={{width: "100%"}}/>
                   <Col className="text-center">
                         <div className="font-weight-bold" style={{color: "#666666"}}>Show more
-                        <span className="ml-1"><i class="bi bi-chevron-compact-down"></i></span>
+                        <span className="ml-1"><i className="bi bi-chevron-compact-down"></i></span>
                         </div>
                   </Col>
                      
