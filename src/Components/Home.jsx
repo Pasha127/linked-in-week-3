@@ -43,7 +43,7 @@ const Home = (props)=>{
   
 
 function addMoreToFeed(){
-  console.log("add more to feed fires");
+  /* console.log("add more to feed fires"); */
   props.addToFeed(props.postList.slice(props.feed.length, props.feed.length+15))
 }
 
@@ -51,7 +51,7 @@ function addMoreToFeed(){
     props.getAllPosts()
   },[]) 
   useEffect(()=>{
-    console.log("boost")
+   /*  console.log("boost") */
   },[props.feed]) 
 /*     useEffect(()=>{
         console.log(props.loadState)

@@ -9,6 +9,7 @@ export  const GET_FRIENDS = "GET_FRIENDS";
 export  const GET_POSTS = "GET_POSTS";
 export  const GET_MORE_POSTS = "GET_MORE_POSTS";
 export  const ADD_TO_FEED = "ADD_TO_FEED";
+export  const GET_PICS = "GET_PICS";
 
 
 export const setLoading =isLoading =>({
@@ -53,6 +54,10 @@ export const setMorePosts =people =>({
   });
 export const addToFeed =posts =>({
     type: ADD_TO_FEED,
+    payload: posts
+  });
+export const getPics =posts =>({
+    type: GET_PICS,
     payload: posts
   });
 
@@ -195,3 +200,33 @@ export const getPostsWithThunk = () => {
         console.log(error)
       }finally{console.log("3 submit-post-thunk");dispatch(setLoading(false));}
     }}
+
+    
+const pexelKey= "563492ad6f917000010000015080b999c314478fa318b5c998a262de"
+export const getPicsWithThunk = () => {
+  const options = {
+      method: 'GET',
+      headers: {
+          Authorization: 'Bearer' +" "+ pexelKey
+      }
+  };
+const baseEndpoint = 'https://striveschool-api.herokuapp.com/api/posts/'
+/* console.log("1 get-post-think") */
+return async (dispatch, getState)=>{
+  try {
+    /* console.log("2 get-post-thank",baseEndpoint) */
+    dispatch(setLoading(true));
+    const response = await fetch(baseEndpoint, options);
+    if (response.ok) {
+      let  data  = await response.json()
+      data = data.reverse()
+      dispatch(setPosts(data))
+      dispatch(addToFeed(data.slice(0,15)))
+    /*  console.log("PostPocalypse!",data); */
+    } else {
+      alert('Error fetching results')
+    }
+  } catch (error) {
+    /* console.log(error) */
+  }finally{/* console.log("3 get-post-thunk") */;dispatch(setLoading(false));}
+}}

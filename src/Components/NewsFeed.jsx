@@ -32,8 +32,9 @@ const NewsFeed = (props) => {
              <div className="postHeader">
                 <h6 className="mb-0 ">{props.text}</h6>
                 <p className="text-secondary mb-0">{props.username}</p>
-                <p className="text-secondary mt-n1 mb-0"></p>
-              </div>            
+                <p className="text-secondary mt-n1 mb-0">{formatDistanceToNow(new Date(props.createdAt))}</p>
+              </div> 
+              <i className="bi bi-three-dots"></i>          
             </div>
       <div className="mb-2">
         <Image src="http://placekitten.com/528/400"/>
