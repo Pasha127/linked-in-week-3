@@ -137,7 +137,7 @@ export const getPostsWithThunk = () => {
         data = data.reverse()
         dispatch(setPosts(data))
         dispatch(addToFeed(data.slice(0,15)))
-      /*  console.log("PostPocalypse!",data); */
+       console.log("PostPocalypse!",data);
       } else {
         alert('Error fetching results')
       }
