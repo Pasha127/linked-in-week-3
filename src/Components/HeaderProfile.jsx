@@ -1,8 +1,35 @@
 import { Card,Image, Row, Col, Button, Modal, ModalBody} from "react-bootstrap"
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { upload, uploadPicWithThunk } from "../app/redux/actions/actions";
+import { connect } from "react-redux";
 
+const mapStateToProps = state => {
+      return {
+      uploaded: state.logic.upload,
+      currentUser: state.user.activeUser,
+      };
+    };
+    
+    const mapDispatchToProps = dispatch => {
+      return {
+        uploadToState: file => {
+          dispatch(upload(file));
+        },
+        uploadToSite: (file,id) =>{
+          dispatch(uploadPicWithThunk(file,id))
+        }
+        
+      };  
+    };
 
-const HeaderProfile = (props) => {
+const HeaderProfile = (props) => {      
+     
+
+      const uploadImage = ()=>{
+            const formData = new FormData();
+            formData.append("profile", props.uploaded)
+            props.uploadToSite(formData,props.currentUser._id);
+        }
      
       const [show, setShow] = useState(false);
       const [show2, setShow2] = useState(false);
@@ -53,14 +80,23 @@ return (
                               </Row>
 
                               <Row className="mt-2 pl-2">
-                              <Button variant="outline-light ml-3">
+
+                              {/* <Button variant="outline-light ml-3">
                                <i className="bi bi-pencil mr-2" ></i>
                                <span>Edit</span>
-                              </Button>
-                              <Button variant="outline-light ml-3">
+                              </Button> */}
+                              <span className="ml-2">
+                              <label className="text-white" htmlFor="picUploadBtn"><i className="bi bi-pencil mr-2" ></i>
+                               <span>Edit</span></label>
+                              <input type="file" className="d-none" id="picUploadBtn" onChange={(e)=>{
+    props.uploadToState(e.target.files[e.target.files.length-1],);
+}}></input>
+                              </span>
+
+                              <Button onClick={()=>{uploadImage(); handleClose3()}} variant="outline-light ml-3">
                                <i className="bi bi-camera-fill mr-2"></i>
                                <span>Add photo</span>
-                               </Button>
+                               </Button> 
                            
                                <Button variant="outline-light ml-3">
                                <i className="bi bi-image-fill mr-2" ></i>
@@ -68,7 +104,7 @@ return (
                                </Button>
                            
                                <Button variant="outline-light" style={{marginLeft: "320px"}}>
-                               <i class="bi bi-trash3-fill mr-2"></i>
+                               <i className="bi bi-trash3-fill mr-2"></i>
                                      Delete</Button>
                                </Row>
                               </Modal.Body>
@@ -225,4 +261,4 @@ return (
 )
 
 }
-export default HeaderProfile
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderProfile)
