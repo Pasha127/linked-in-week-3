@@ -121,3 +121,7 @@ div.spinner-border{
 .postCard{
   max-width: 530px;
 }
+#userName:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

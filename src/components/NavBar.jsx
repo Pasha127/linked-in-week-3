@@ -90,7 +90,7 @@ return (<>
           </Nav.Link>
           <Nav.Link
              className="d-flex flex-column align-items-center pr-4"
-             href="#home" style={{width: "90px"}}>
+             href="/profile" style={{width: "90px"}}>
               <Image className="navPic mt-1" src={props.currentUser.image}/>
             <span className="d-none d-md-inline-block" style={{fontSize: "12px"}}>{props.currentUser.name}</span>
           </Nav.Link>
