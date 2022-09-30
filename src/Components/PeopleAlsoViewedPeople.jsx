@@ -13,7 +13,7 @@ const PeopleAlsoViewedPeople = (props) => {
                   style={{ width: "50px", height: "50px" }}
                   roundedCircle />
                   <div className="profile-details ml-2">
-                  <div className="text-left font-weight-bold" style={{ fontSize: "14px" }}
+                  <div className="text-left font-weight-bold" id="userName" style={{ fontSize: "14px" }}
                   onClick={() => {
                         navigate(`/profile/${props.friend._id}`);
                   }} >{props.friend.name} {props.friend.surname} </div>

@@ -78,7 +78,8 @@ return (
                               <i className="bi bi-eye-fill"></i><span className="ml-2">Anyone</span>
                               </Button>
                               </Row>
-
+                              </Modal.Body>
+                              <Modal.Footer style={{backgroundColor: "#1d2226"}}>
                               <Row className="mt-2 pl-2">
 
                               {/* <Button variant="outline-light ml-3">
@@ -86,11 +87,11 @@ return (
                                <span>Edit</span>
                               </Button> */}
                               <span className="ml-2">
-                              <label className="text-white" htmlFor="picUploadBtn"><i className="bi bi-pencil mr-2" ></i>
-                               <span>Edit</span></label>
-                              <input type="file" className="d-none" id="picUploadBtn" onChange={(e)=>{
-    props.uploadToState(e.target.files[e.target.files.length-1],);
-}}></input>
+                              <label className="text-white mt-2" htmlFor="picUploadBtn"><i className="bi bi-pencil mr-2" ></i>
+                              <span id="userName">Edit</span></label>
+                              <input type="file" className="d-none"  id="picUploadBtn" onChange={(e)=>{
+                              props.uploadToState(e.target.files[e.target.files.length-1],);}}>
+                              </input>
                               </span>
 
                               <Button onClick={()=>{uploadImage(); handleClose3()}} variant="outline-light ml-3">
@@ -98,16 +99,16 @@ return (
                                <span>Add photo</span>
                                </Button> 
                            
-                               <Button variant="outline-light ml-3">
+                               {/* <Button variant="outline-light ml-3">
                                <i className="bi bi-image-fill mr-2" ></i>
                                <span>Frames</span>
-                               </Button>
+                               </Button> */}
                            
-                               <Button variant="outline-light" style={{marginLeft: "320px"}}>
+                               {/* <Button variant="outline-light" style={{marginLeft: "320px"}}>
                                <i className="bi bi-trash3-fill mr-2"></i>
-                                     Delete</Button>
+                                     Delete</Button> */}
                                </Row>
-                              </Modal.Body>
+                              </Modal.Footer>
                         </Modal>
 
                    
