@@ -1,14 +1,15 @@
 import { Navbar,Container, Nav, FormControl, Form, Image } from "react-bootstrap"
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "../css/NavBar.css"
-import { handleFetchWithThunk } from "../app/redux/actions/actions";
+import { handleFetchWithThunk, setSearch } from "../app/redux/actions/actions";
 import { useEffect } from "react";
 import { connect } from "react-redux";
 
 const mapStateToProps = state => {
   return {
     loadState: state.logic.loading,
-    currentUser: state.user.activeUser
+    currentUser: state.user.activeUser,
+    query: state.logic.search
   };
 };
 
@@ -17,6 +18,10 @@ const mapDispatchToProps = dispatch => {
     getFetch: person => {
       dispatch(handleFetchWithThunk(person));
     },
+    setSearchVal: query =>{
+      dispatch(setSearch(query))
+    }
+    
   };  
 };
 const NavBar =(props) => {
@@ -44,6 +49,7 @@ return (<>
               <FormControl
                 type="text"
                 placeholder="Search"
+                onChange={(e)=>props.setSearchVal(e.target.value)}
                 className="mr-sm-2 "
                 style={{
                   backgroundColor: "#eef3f8",

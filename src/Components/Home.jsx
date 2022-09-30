@@ -16,7 +16,8 @@ const mapStateToProps = state => {
     return {
     loadState: state.logic.loading,
     postList: state.logic.posts,
-    feed: state.logic.feed    
+    feed: state.logic.feed,  
+    query: state.logic.search
     };
   };
   
@@ -81,7 +82,7 @@ return(
 
       >
           {<div>
-            {props.feed.map((post, index)=><NewsFeed key={index} user={post.user} image={post.image} createdAt={post.createdAt} username={post.username} text={post.text} postId={post._id}  />)}
+            {props.feed.filter((post)=>post.text.toLowerCase().includes(props.query.toLowerCase()) ).map((post, index)=><NewsFeed key={index} user={post.user} image={post.image} createdAt={post.createdAt} username={post.username} text={post.text} postId={post._id}  />)}
             </div>}   
       </InfiniteScroll>
      
