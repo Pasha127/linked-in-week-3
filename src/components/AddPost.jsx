@@ -15,7 +15,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     sendPost: (text,img)=> { 
-            dispatch(submitPostsWithThunk(text,img));
+            dispatch(submitPostsWithThunk({text},img));
     }
   };  
 };
@@ -33,7 +33,8 @@ const AddPost = (props) => {
   const uploadImage = (text)=>{
     const formData = new FormData();
     formData.append("profile", props.uploaded)
-    props.sendPost(text, formData);
+     props.sendPost(text, formData); 
+     setText('');
   }
 
  /*  useEffect(()=>{
@@ -55,14 +56,14 @@ return (
                 placeholder="Start a post"
                 className="pl-4"
                 value="Start a post"
-                
                 onClick={handleShow}
                 style={{ backgroundColor: "white",
-                  border: "1px solid grey",
-                  borderRadius: "30px",
-                  height: "50px",
-                  width: "410px",
-                }}
+                border: "1px solid grey",
+                borderRadius: "30px",
+                height: "50px",
+                width: "410px",
+              }}
+              readOnly
               />
             </Form> 
 
@@ -131,7 +132,7 @@ return (
                           <Button
                             variant="outline-dark"
                             style={{ borderRadius: "30px", fontWeight: "bold"}}
-                            onClick={()=>{uploadImage();handleClose()}}>
+                            onClick={()=>{uploadImage(text);handleClose()}}>
                             Post
                          </Button>
                          </Col>

@@ -170,15 +170,17 @@ export const deletePostsWithThunk = (id) => {
       dispatch(setLoading(true));
       const response = await fetch(baseEndpoint + id, options);
       if (response.ok) {    
-       await  dispatch(delPost(id))   
-           
+       await  dispatch(delPost(id))
+        await dispatch(setPosts({}))   
+           dispatch(getPostsWithThunk())
+          
        console.log("deleted");
       } else {
         alert('Error fetching results')
       }
     } catch (error) {
       /* console.log(error) */
-    }finally{ console.log("3 Del-post-thunk");dispatch(setLoading(false));handleFetchWithThunk();}
+    }finally{ console.log("3 Del-post-thunk");dispatch(setLoading(false));window.location.reload()}
   }}
   
   
@@ -303,7 +305,7 @@ export const postFeedImgWithThunk = (postImg,id) => {
 
 
 
-      export const submitPostsWithThunk = async (postObj, postImg = null) => {
+      export const submitPostsWithThunk = (postObj, postImg = null) => {
           const options = {
               method: 'POST',
               headers: {
@@ -321,7 +323,7 @@ export const postFeedImgWithThunk = (postImg,id) => {
             const response = await fetch(baseEndpoint, options);
             if (response.ok) {
               const  data  = await response.json();
-              postImg && dispatch(postFeedImgWithThunk(postImg, data._id));
+              postImg.length >0 ? dispatch(postFeedImgWithThunk(postImg, data._id)):window.location.reload();
             } else {
               alert('Error fetching results')
             }
