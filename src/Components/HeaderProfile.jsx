@@ -54,17 +54,17 @@ return (
 
                               <Row className="mt-2 pl-2">
                               <Button variant="outline-light ml-3">
-                               <i className="bi bi-pencil mr-2" style={{color: "white",}}></i>
-                               <span style={{color: "white"}}>Edit</span>
+                               <i className="bi bi-pencil mr-2" ></i>
+                               <span>Edit</span>
                               </Button>
                               <Button variant="outline-light ml-3">
-                               <i className="bi bi-camera-fill mr-2"style={{color: "white"}}></i>
-                               <span style={{color: "white"}}>Add photo</span>
+                               <i className="bi bi-camera-fill mr-2"></i>
+                               <span>Add photo</span>
                                </Button>
                            
                                <Button variant="outline-light ml-3">
-                               <i className="bi bi-image-fill mr-2" style={{color: "white"}}></i>
-                               <span style={{color: "white"}}>Frames</span>
+                               <i className="bi bi-image-fill mr-2" ></i>
+                               <span>Frames</span>
                                </Button>
                            
                                <Button variant="outline-light" style={{marginLeft: "320px"}}>
