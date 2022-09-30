@@ -1,4 +1,5 @@
 import { Image, Button, Card, Form, FormControl} from "react-bootstrap";
+import {Image as CloudImage } from "cloudinary-react"
 /* import { getPostsWithThunk } from "../app/redux/actions/actions"; */
 import { useEffect } from "react";
 import { connect } from "react-redux";
@@ -27,16 +28,22 @@ const NewsFeed = (props) => {
      
        <Card className="mt-3"style={{ width: '33rem', borderRadius: "12px" }}>
             <div className="d-flex ml-3">
-            <Image src="https://media.istockphoto.com/vectors/user-avatar-profile-icon-black-vector-illustration-vector-id1209654046?k=20&m=1209654046&s=612x612&w=0&h=Atw7VdjWG8KgyST8AXXJdmBkzn0lvgqyWod9vTb2XoE=" 
-                  roundedCircle style={{width: "80px"}}/>  
+           {props.user?.image ?   
+            <CloudImage  cloudName="dmqsfltrf" publicId={props.user.image}
+                  roundedCircle style={{width: "80px"}}/> :
+                  <Image src="https://media.istockphoto.com/vectors/user-avatar-profile-icon-black-vector-illustration-vector-id1209654046?k=20&m=1209654046&s=612x612&w=0&h=Atw7VdjWG8KgyST8AXXJdmBkzn0lvgqyWod9vTb2XoE=" 
+                  roundedCircle style={{width: "80px"}}/> }
              <div className="postHeader">
                 <h6 className="mb-0 ">{props.text}</h6>
                 <p className="text-secondary mb-0">{props.username}</p>
-                <p className="text-secondary mt-n1 mb-0">{formatDistanceToNow((new Date(props.createdAt)))}</p>
-              </div>            
+                <p className="text-secondary mt-n1 mb-0">{formatDistanceToNow(new Date(props.createdAt))}</p>
+              </div> 
+              <i className="bi bi-three-dots"></i>          
             </div>
       <div className="mb-2">
-        <Image src="http://placekitten.com/528/400"/>
+        {props.image ?
+        <CloudImage cloudName="dmqsfltrf" publicId={props.image}/> :
+       <Image src= "http://placekitten.com/528/400"/> }
       </div>
       <div className="interactionsContainer mb-2">
           <div> <i className="bi bi-hand-thumbs-up ml-4"></i></div>

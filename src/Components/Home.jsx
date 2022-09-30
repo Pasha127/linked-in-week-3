@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Container, Row, Col, Card,Image} from "react-bootstrap";
 import { connect } from "react-redux";
-import { setSearch } from '../app/redux/actions/actions';
+import { addToFeed, setSearch } from '../app/redux/actions/actions';
 import FooterRightSide from "./FooterRightSide";
 import RightSideBar from "./RightSideBar";
 import AddPost from "./AddPost";
@@ -9,14 +9,16 @@ import Loader from './Loader';
 import LeftSideBar from "./LeftSideBar";
 import LeftDownSideBar from "./LeftDownSideBar";
 import NewsFeed from "./NewsFeed";
-import InfiniteScroll from 'react-infinite-scroller';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import Spinner from 'react-bootstrap/Spinner';
 import { getPostsWithThunk } from "../app/redux/actions/actions";
+import { getMorePostsWithThunk } from "../app/redux/actions/actions";
 
 const mapStateToProps = state => {
     return {
     loadState: state.logic.loading,
-    postList: state.logic.posts
+    postList: state.logic.posts,
+    feed: state.logic.feed
     };
   };
   
@@ -25,19 +27,35 @@ const mapStateToProps = state => {
       setQuery: query => {
         dispatch(setSearch(query));
       },
-      getPosts: people => {
+      getAllPosts: people => {
         dispatch(getPostsWithThunk());
+      },
+      getMorePosts: (posts,n) => {
+        dispatch(getPostsWithThunk(posts,n));
+      },
+      addToFeed: posts => {
+        dispatch(addToFeed(posts));
       }
       
     };  
   };
-const Home = (props)=>{
+const Home = (props)=>{  
+  
+
+function addMoreToFeed(){
+  /* console.log("add more to feed fires"); */
+  props.addToFeed(props.postList.slice(props.feed.length, props.feed.length+15))
+}
+
   useEffect(()=>{
-    props.getPosts()
+    props.getAllPosts()
   },[]) 
-    useEffect(()=>{
+  useEffect(()=>{
+   /*  console.log("boost") */
+  },[props.feed]) 
+/*     useEffect(()=>{
         console.log(props.loadState)
-    },[props.loadState]) 
+    },[props.loadState])  */
 
 return(
 <>
@@ -55,16 +73,23 @@ return(
      <AddPost />
      </div>
      <InfiniteScroll
-    pageStart={0}
-    threshold={2}
-    loadMore={<></>}
-    hasMore={true || false}
-    loader={<div className="loader" key={0}>Loading ...</div>}
->
-    {<div>
-      {props.postList.map((post)=><NewsFeed key={post._id} createdAt={post.createdAt} username={post.username} text={post.text}  />)}
-      </div>} 
-</InfiniteScroll>
+        dataLength={props.feed.length} 
+        next={addMoreToFeed}
+        hasMore={true}
+        loader={<div className="d-flex justify-content-center overflow-hidden">
+          <h4>Loading...</h4>
+        </div>}
+        endMessage={
+          <p style={{ textAlign: 'center' }}>
+            <b>Congrats! You've linked all the way in!</b>
+          </p>
+        }
+
+      >
+          {<div>
+            {props.feed.map((post, index)=><NewsFeed key={index} createdAt={post.createdAt} username={post.username} text={post.text}  />)}
+            </div>}   
+      </InfiniteScroll>
      
     </Col>
     <Col md={3}>
