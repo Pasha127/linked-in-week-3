@@ -1,5 +1,5 @@
 import { initialState } from "../store/store";
-import { LOADING,SEARCH, LIKE, UNLIKE, GET_POSTS, GET_MORE_POSTS, ADD_TO_FEED, GET_PICS } from "../actions/actions";
+import { LOADING,SEARCH, LIKE, UNLIKE, GET_POSTS, GET_MORE_POSTS, ADD_TO_FEED, GET_PICS, UPLOAD } from "../actions/actions";
 const logicReducer = (state = initialState.logic, action) => {
     switch (action.type) {
       case LOADING:
@@ -42,6 +42,11 @@ const logicReducer = (state = initialState.logic, action) => {
         return{
           ...state,
           pics: [...state.pics, ...action.payload]
+        }     
+      case UPLOAD:
+        return{
+          ...state,
+          upload: action.payload
         }      
       
       default:

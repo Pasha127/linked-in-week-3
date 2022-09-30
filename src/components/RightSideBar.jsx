@@ -31,8 +31,8 @@ const RightSideBar = (props) => {
   return (
     <>
     
-   {console.log("where my friends at?",friendsWithPics)} 
-
+   {/* {console.log("where my friends at?",friendsWithPics)} 
+ */}
       <Container>
         <Row>
         <Card className="mt-4 pb-3"style={{ width: '19rem', borderRadius: "12px" }}>

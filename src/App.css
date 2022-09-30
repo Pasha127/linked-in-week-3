@@ -108,10 +108,12 @@ div.spinner-border{
   border-radius: 50%;
   margin-top: 15px;
   margin-right: 15px;
+  flex-shrink: 0;
   
 }
 .profImg{
   width: 55px;
+  flex-shrink: 0;
 }
 .postImg{
   width: 530px;

@@ -10,15 +10,13 @@ import LeftSideBar from "./LeftSideBar";
 import LeftDownSideBar from "./LeftDownSideBar";
 import NewsFeed from "./NewsFeed";
 import InfiniteScroll from 'react-infinite-scroll-component';
-import Spinner from 'react-bootstrap/Spinner';
 import { getPostsWithThunk } from "../app/redux/actions/actions";
-import { getMorePostsWithThunk } from "../app/redux/actions/actions";
 
 const mapStateToProps = state => {
     return {
     loadState: state.logic.loading,
     postList: state.logic.posts,
-    feed: state.logic.feed
+    feed: state.logic.feed    
     };
   };
   
@@ -43,19 +41,15 @@ const Home = (props)=>{
   
 
 function addMoreToFeed(){
-  /* console.log("add more to feed fires"); */
   props.addToFeed(props.postList.slice(props.feed.length, props.feed.length+15))
 }
 
   useEffect(()=>{
     props.getAllPosts()
   },[]) 
+
   useEffect(()=>{
-   /*  console.log("boost") */
   },[props.feed]) 
-/*     useEffect(()=>{
-        console.log(props.loadState)
-    },[props.loadState])  */
 
 return(
 <>
@@ -93,10 +87,11 @@ return(
      
     </Col>
     <Col md={3}>
+      
       <RightSideBar />
       <Card className="mt-3 pl-2 pr-2" style={{ width: '18rem', borderRadius: "12px", height: "220px"}}>
-             <Image src="https://imgur.com/a/OBpgT3Q"
-              fluid/>                 
+      <Image src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png"
+                        fluid/>                        
       </Card>
       <FooterRightSide />
     </Col>

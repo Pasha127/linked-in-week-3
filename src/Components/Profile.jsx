@@ -8,6 +8,7 @@ import HeaderProfileFriend from "./HeaderProfileFriend";
 
 
 
+
 const Profile = (props) => {
    const params = useParams()
 
@@ -55,13 +56,13 @@ const Profile = (props) => {
 
 
    return (
-
+      
       <Container>
          {state.user &&
             <Row>
                <Col md={8}>
                   <HeaderProfileFriend user={state.user} />
-
+                  
                   <Experiences userId={state.user._id} canEdit={false}/>
                </Col>
 
@@ -71,6 +72,7 @@ const Profile = (props) => {
                         fluid/>                
                   </Card>
                   <PeopleAlsoViewed />
+                     
                </Col>
             
             </Row>

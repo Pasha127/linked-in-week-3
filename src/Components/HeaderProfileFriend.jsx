@@ -1,5 +1,6 @@
 import { Card,Image, Row, Col, Button, Modal, ModalBody} from "react-bootstrap"
 import { useState } from "react";
+import FileUploadTestComp from "./FileUploadTestComp";
 
 
 const HeaderProfileFriend = (props) => {
@@ -41,6 +42,7 @@ return (
                    <Row>
                          <div className="ml-5 pl-2">{props.user.title}</div>
                    </Row>
+                   
                    <Row>
                          
                          <div className="ml-5 pl-2 font-weight-lighter" style={{fontSize: "15px"}}>{props.user.area}</div>

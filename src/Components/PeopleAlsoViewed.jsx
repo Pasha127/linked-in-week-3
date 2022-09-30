@@ -20,7 +20,7 @@ const mapStateToProps = state => {
     };
 
 const PeopleAlsoViewed = (props) => {
-
+      let  friendsWithPics = [...props.friendList.filter(friend => friend.image !== "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png")]
       useEffect(()=>{
             props.getFriends()
         },[]) 
@@ -33,7 +33,7 @@ const PeopleAlsoViewed = (props) => {
                  </Row>  
                   <div className="pl-2 mt-3">
                   {props.friendList&&
-                  props.friendList.slice(6,11).map((friend, index) => 
+                  friendsWithPics.slice(10,15).map((friend, index) => 
                   <Col key={index}>
                         <PeopleAlsoViewedPeople friend={friend}/>
                   </Col>

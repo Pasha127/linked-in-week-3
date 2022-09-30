@@ -7,7 +7,8 @@ const mapStateToProps = state => {
   return {
   loadState: state.logic.loading,
   postList: state.logic.posts,
-  feed: state.logic.feed
+  feed: state.logic.feed,
+  currentUser: state.user.activeUser
   };
 };
 
@@ -32,8 +33,10 @@ return (
      
        <Card className="mt-4"style={{ width: '33rem', borderRadius: "12px" }}>
             <div className="d-flex ml-3">
-            <Image src="https://media.istockphoto.com/vectors/user-avatar-profile-icon-black-vector-illustration-vector-id1209654046?k=20&m=1209654046&s=612x612&w=0&h=Atw7VdjWG8KgyST8AXXJdmBkzn0lvgqyWod9vTb2XoE=" 
-                  roundedCircle style={{width: "80px"}}/>  
+            <div className="profilePicStyle"> 
+                    
+            <img className="profImg" src={props.currentUser.image} alt="profile pic"/>
+              </div>
              <Form onSubmit={(e)=>{e.preventDefault();props.sendPost(text);setText('')}} className="mt-3">
               <FormControl 
                 type="text"

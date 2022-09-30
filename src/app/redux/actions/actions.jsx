@@ -10,6 +10,7 @@ export  const GET_POSTS = "GET_POSTS";
 export  const GET_MORE_POSTS = "GET_MORE_POSTS";
 export  const ADD_TO_FEED = "ADD_TO_FEED";
 export  const GET_PICS = "GET_PICS";
+export  const UPLOAD = "UPLOAD";
 
 
 export const setLoading =isLoading =>({
@@ -58,6 +59,10 @@ export const addToFeed =posts =>({
   });
 export const getPics =posts =>({
     type: GET_PICS,
+    payload: posts
+  });
+export const upload =posts =>({
+    type: UPLOAD,
     payload: posts
   });
 
@@ -201,8 +206,35 @@ export const getPostsWithThunk = () => {
       }finally{console.log("3 submit-post-thunk");dispatch(setLoading(false));}
     }}
 
+  export const uploadPicWithThunk = (postObj,id) => {
+      const options = {
+          method: 'POST',
+          headers: {
+              
+              Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMxOGRiNDc2NTM5YzAwMTViNWNkNmEiLCJpYXQiOjE2NjQxOTE5MjQsImV4cCI6MTY2NTQwMTUyNH0.L96ybdKZjUiPLG95huiiaqlmfE5bLIunxqmgGUnOYBY'
+          },
+          body: postObj
+      };
+    const baseEndpoint = `https://striveschool-api.herokuapp.com/api/profile/${id}/picture`
+    console.log("1 submit-post-think")
+    return async (dispatch, getState)=>{
+      try {
+        console.log("2 submit-post-thank",baseEndpoint)
+        dispatch(setLoading(true));
+        const response = await fetch(baseEndpoint, options);
+        if (response.ok) {          
+         console.log("PostEntered!");
+        } else {
+          alert('Error fetching results')
+        }
+      } catch (error) {
+        console.log(error)
+      }finally{console.log("3 submit-post-thunk");dispatch(setLoading(false));}
+    }}
+
     
 const pexelKey= "563492ad6f917000010000015080b999c314478fa318b5c998a262de"
+
 export const getPicsWithThunk = () => {
   const options = {
       method: 'GET',
