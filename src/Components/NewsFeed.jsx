@@ -1,30 +1,17 @@
-import { Image, Button, Card, Form, FormControl} from "react-bootstrap";
+import { Modal, Row, Button, Card, Form, FormControl} from "react-bootstrap";
 import {Image as CloudImage } from "cloudinary-react"
-/* import { getPostsWithThunk } from "../app/redux/actions/actions"; */
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { formatDistanceToNow } from 'date-fns'
-/* const mapStateToProps = state => {
-  return {
-  loadState: state.logic.loading,
-  currentUser: state.user.activeUser,
-  postList: state.logic.posts
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    getPosts: people => {
-      dispatch(getPostsWithThunk());
-    },
-  };  
-}; */
+import { useState } from "react";
 const NewsFeed = (props) => {
-  
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   /* useEffect(()=>{
     props.getPosts()
   },[])  */
-  return (
+  return (<>
      
        <Card className="mt-3 postCard"style={{ width: '33rem', borderRadius: "12px" }}>
             <div className="d-flex ml-3">
@@ -38,7 +25,10 @@ const NewsFeed = (props) => {
                 <p className="text-secondary mb-0">{props.username}</p>
                 <p className="text-secondary mt-n1 mb-0">{formatDistanceToNow(new Date(props.createdAt))}</p>
               </div> 
-              <i className="bi bi-three-dots ml-auto mr-3 mt-2"></i>          
+              <div className=" ml-auto mr-3 mt-2" onClick={handleShow}>
+                <i className="bi bi-three-dots" ></i>          
+              </div>
+
             </div>
       <div className="mb-2">
         {props.image ?
@@ -58,6 +48,30 @@ const NewsFeed = (props) => {
         </Button>
       </div>
       </Card>
+      <Modal show={show} onHide={handleClose} className="modal-image">
+            <Modal.Header closeButton>
+            <Modal.Title style={{fontSize: "20px"}}>{props.user.name} {props.user.surname}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                  <div className="mb-3" style={{fontSize: "20px"}}>Contact Info</div>
+            <Row className="ml-1">
+                  <i className="bi bi-linkedin" style={{fontSize: "20px"}}></i>
+                  <span className="ml-4 mt-1 font-weight-bold">Your profile</span>
+            </Row>
+                  <div className="font-weight-bold ml-5" style={{color: "#0b65c2", fontSize: "14px"}}>linkedin.com/in/{props.user._id}</div>
+            <Row className="ml-1 mt-3">
+                  <i className="bi bi-envelope" style={{fontSize: "20px"}}></i>
+                  <span className="ml-4 mt-1 font-weight-bold">Email</span>
+            </Row>
+                  <div className="font-weight-bold ml-5" style={{color: "#0b65c2", fontSize: "14px"}}>{props.user.email}</div>
+            </Modal.Body>
+            <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+            Close
+            </Button>
+            </Modal.Footer>
+      </Modal>
+                        </>
    
 )
 
