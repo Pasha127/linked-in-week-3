@@ -6,12 +6,17 @@ const HeaderProfile = (props) => {
      
       const [show, setShow] = useState(false);
       const [show2, setShow2] = useState(false);
+      const [show3, setShow3] = useState(false);
 
       const handleClose = () => setShow(false);
       const handleShow = () => setShow(true);
 
       const handleClose2 = () => setShow2(false);
       const handleShow2 = () => setShow2(true);
+
+
+      const handleClose3 = () => setShow3(false);
+      const handleShow3 = () => setShow3(true);
 
        
 
@@ -23,7 +28,70 @@ return (
                    <Image className="ml-5"
                    src={props.user.image} roundedCircle 
                    style={{ height: "150px", width: "150px", marginTop: "-100px", border: "5px solid white"}}
+                   onClick={handleShow3}
                    />
+
+
+                         <Modal size="lg" show={show3} onHide={handleClose3} className="modal-image">
+                              <Modal.Header closeButton  style={{backgroundColor: "#1d2226"}}>
+                              <Modal.Title className="font-weight-bold" style={{fontSize: "20px", color: "white"}}>Profile photo</Modal.Title>
+                              </Modal.Header>
+                              <Modal.Body style={{backgroundColor: "#1d2226"}}>
+                              <Row className="justify-content-md-center">
+                                    
+                              <Image className=""
+                              src={props.user.image} roundedCircle 
+                              style={{ height: "300px", width: "300px"}}/>
+                          
+                              </Row>
+                              <Row className="mt-4 ml-2">
+                               <Button
+                              variant="outline-light"
+                              style={{ borderRadius: "30px", fontWeight: "bold"}}>
+                              <i className="bi bi-eye-fill"></i><span className="ml-2">Anyone</span>
+                              </Button>
+                              </Row>
+
+                              <Row className="mt-2 pl-2">
+                              <Button variant="outline-light ml-3">
+                               <i className="bi bi-pencil mr-2" ></i>
+                               <span>Edit</span>
+                              </Button>
+                              <Button variant="outline-light ml-3">
+                               <i className="bi bi-camera-fill mr-2"></i>
+                               <span>Add photo</span>
+                               </Button>
+                           
+                               <Button variant="outline-light ml-3">
+                               <i className="bi bi-image-fill mr-2" ></i>
+                               <span>Frames</span>
+                               </Button>
+                           
+                               <Button variant="outline-light" style={{marginLeft: "320px"}}>
+                               <i class="bi bi-trash3-fill mr-2"></i>
+                                     Delete</Button>
+                               </Row>
+                              </Modal.Body>
+                        </Modal>
+
+                   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                    <Row>
                          <Col md={8}>
                          <div className="ml-4 pl-3 font-weight-bold" style={{fontSize: "27px"}}>{props.user.name} {props.user.surname}
@@ -34,7 +102,8 @@ return (
                           <div className="mt-3">
                           <Image 
                               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP3OEVxWnMEGekDEUZA-ScFV4xT6AiDvx12JFU1fL7nA&s"
-                              style={{ width: "30px"}} />
+                              style={{ width: "30px"}} 
+                              />
                              <span className="ml-2 font-weight-bold">Epicode Global</span>
                           </div>     
                          </Col>
