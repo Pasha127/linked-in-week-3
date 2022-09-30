@@ -208,43 +208,17 @@ export const deletePostsWithThunk = (id) => {
     }finally{/* console.log("3 get-post-thunk") */;dispatch(setLoading(false));}
   }}
 
-
-  export const submitPostsWithThunk = (postObj) => {
-      const options = {
-          method: 'POST',
-          headers: {
-              "Content-Type": "application/json",
-              Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMxOGRiNDc2NTM5YzAwMTViNWNkNmEiLCJpYXQiOjE2NjQxOTE5MjQsImV4cCI6MTY2NTQwMTUyNH0.L96ybdKZjUiPLG95huiiaqlmfE5bLIunxqmgGUnOYBY'
-          },
-          body: JSON.stringify(postObj)
-      };
-    const baseEndpoint = 'https://striveschool-api.herokuapp.com/api/posts/'
-    console.log("1 submit-post-think")
-    return async (dispatch, getState)=>{
-      try {
-        console.log("2 submit-post-thank",baseEndpoint)
-        dispatch(setLoading(true));
-        const response = await fetch(baseEndpoint, options);
-        if (response.ok) {          
-         console.log("PostEntered!");
-        } else {
-          alert('Error fetching results')
-        }
-      } catch (error) {
-        console.log(error)
-      }finally{console.log("3 submit-post-thunk");dispatch(setLoading(false));}
-    }}
-
+  
   export const uploadPicWithThunk = (postObj,id) => {
-      const options = {
-          method: 'POST',
+    const options = {
+      method: 'POST',
           headers: {
-              
+            
               Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMxOGRiNDc2NTM5YzAwMTViNWNkNmEiLCJpYXQiOjE2NjQxOTE5MjQsImV4cCI6MTY2NTQwMTUyNH0.L96ybdKZjUiPLG95huiiaqlmfE5bLIunxqmgGUnOYBY'
           },
           body: postObj
       };
-    const baseEndpoint = `https://striveschool-api.herokuapp.com/api/profile/${id}/picture`
+      const baseEndpoint = `https://striveschool-api.herokuapp.com/api/profile/${id}/picture`
     console.log("1 submit-post-think")
     return async (dispatch, getState)=>{
       try {
@@ -252,9 +226,14 @@ export const deletePostsWithThunk = (id) => {
         
         const response = await fetch(baseEndpoint, options);
         if (response.ok) { 
+<<<<<<< HEAD
           dispatch(setLoading(true))  
           dispatch(handleFetchWithThunk("me"))       
          console.log("PostEntered!");
+=======
+          dispatch(setLoading(false))         
+          console.log("PostEntered!");
+>>>>>>> 89224e9212ec084db24e6e4857baf653f459e1a9
         } else {
           alert('Error fetching results')
         }
@@ -264,32 +243,91 @@ export const deletePostsWithThunk = (id) => {
     }}
     
     
-const pexelKey= "563492ad6f917000010000015080b999c314478fa318b5c998a262de"
-
+    const pexelKey= "563492ad6f917000010000015080b999c314478fa318b5c998a262de"
+    
 export const getPicsWithThunk = () => {
   const options = {
-      method: 'GET',
-      headers: {
-          Authorization: 'Bearer' +" "+ pexelKey
-      }
-  };
-const baseEndpoint = 'https://striveschool-api.herokuapp.com/api/posts/'
-/* console.log("1 get-post-think") */
-return async (dispatch, getState)=>{
-  try {
-    /* console.log("2 get-post-thank",baseEndpoint) */
-    dispatch(setLoading(true));
-    const response = await fetch(baseEndpoint, options);
-    if (response.ok) {
-      let  data  = await response.json()
-      data = data.reverse()
-      dispatch(setPosts(data))
-      dispatch(addToFeed(data.slice(0,15)))
-    /*  console.log("PostPocalypse!",data); */
-    } else {
-      alert('Error fetching results')
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer' +" "+ pexelKey
     }
-  } catch (error) {
+  };
+  const baseEndpoint = 'https://striveschool-api.herokuapp.com/api/posts/'
+  /* console.log("1 get-post-think") */
+  return async (dispatch, getState)=>{
+    try {
+      /* console.log("2 get-post-thank",baseEndpoint) */
+      dispatch(setLoading(true));
+      const response = await fetch(baseEndpoint, options);
+      if (response.ok) {
+        let  data  = await response.json()
+        data = data.reverse()
+        dispatch(setPosts(data))
+        dispatch(addToFeed(data.slice(0,15)))
+        /*  console.log("PostPocalypse!",data); */
+      } else {
+        alert('Error fetching results')
+      }
+    } catch (error) {
     /* console.log(error) */
   }finally{/* console.log("3 get-post-thunk") */;dispatch(setLoading(false));}
 }}
+
+
+
+export const postFeedImgWithThunk = (postObj,id) => {
+  const options = {
+    method: 'POST',
+        headers: {
+          
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMxOGRiNDc2NTM5YzAwMTViNWNkNmEiLCJpYXQiOjE2NjQxOTE5MjQsImV4cCI6MTY2NTQwMTUyNH0.L96ybdKZjUiPLG95huiiaqlmfE5bLIunxqmgGUnOYBY'
+        },
+        body: postObj
+    };
+    const baseEndpoint = `https://striveschool-api.herokuapp.com/api/profile/${id}/picture`
+  console.log("1 submit-post-think")
+  return async (dispatch, getState)=>{
+    try {
+      console.log("2 submit-post-thank",baseEndpoint)
+      dispatch(setLoading(true));
+      const response = await fetch(baseEndpoint, options);
+      if (response.ok) { 
+        dispatch(setLoading(false))         
+        console.log("PostEntered!");
+      } else {
+        alert('Error fetching results')
+      }
+    } catch (error) {
+      console.log(error)
+    }finally{console.log("3 submit-post-thunk");}
+  }}
+
+
+
+
+      export const submitPostsWithThunk = async (postObj, postImg) => {
+          const options = {
+              method: 'POST',
+              headers: {
+                  "Content-Type": "application/json",
+                  Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMxOGRiNDc2NTM5YzAwMTViNWNkNmEiLCJpYXQiOjE2NjQxOTE5MjQsImV4cCI6MTY2NTQwMTUyNH0.L96ybdKZjUiPLG95huiiaqlmfE5bLIunxqmgGUnOYBY'
+              },
+              body: JSON.stringify(postObj)
+          };
+        const baseEndpoint = 'https://striveschool-api.herokuapp.com/api/posts/'
+        console.log("1 submit-post-think")
+        return async (dispatch, getState)=>{
+          try {
+            console.log("2 submit-post-thank",baseEndpoint)
+            dispatch(setLoading(true));
+            const response = await fetch(baseEndpoint, options);
+            if (response.ok) {
+              const  data  = await response.json()
+              dispatch(postFeedImgWithThunk(postImg, data))
+            } else {
+              alert('Error fetching results')
+            }
+          } catch (error) {
+            console.log(error)
+          }finally{console.log("3 submit-post-thunk");dispatch(setLoading(false));}
+        }}
