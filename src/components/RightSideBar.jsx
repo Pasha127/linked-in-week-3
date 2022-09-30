@@ -33,9 +33,8 @@ const RightSideBar = (props) => {
     
    {/* {console.log("where my friends at?",friendsWithPics)} 
  */}
-      <Container>
-        <Row>
-        <Card className="mt-4 pb-3"style={{ width: '19rem', borderRadius: "12px" }}>
+ 
+        <Card className="mt-4 pb-3"style={{ width: '18rem', borderRadius: "12px" }}>
             <div className="pt-3">
               <span className="pl-3 pb-3 text d-flex justify-content-between font-weight-bold">
                 Add to your feed 
@@ -44,7 +43,7 @@ const RightSideBar = (props) => {
               <div className="pl-2">
                 <div>
                   <div className="d-flex">                  
-                    <div className="profile-details ml-2 mt-2">
+                    <div className="profile-details ml-2">
                       
                      {  friendsWithPics.slice(0,3).map((friend,i)=><FriendComponent key={i+friend.name} friend={friend}/>)}
 
@@ -55,10 +54,8 @@ const RightSideBar = (props) => {
                 
                 
               </div>
-            
          </Card>
-        </Row>
-      </Container>
+ 
     </>
   );
 };
