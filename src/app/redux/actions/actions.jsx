@@ -249,10 +249,10 @@ export const deletePostsWithThunk = (id) => {
     return async (dispatch, getState)=>{
       try {
         console.log("2 submit-post-thank",baseEndpoint)
-        dispatch(setLoading(true));
+        
         const response = await fetch(baseEndpoint, options);
         if (response.ok) { 
-          dispatch(setLoading(false))         
+          dispatch(setLoading(true))         
          console.log("PostEntered!");
         } else {
           alert('Error fetching results')
