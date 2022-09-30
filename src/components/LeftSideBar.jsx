@@ -15,7 +15,7 @@ const LeftSideBar = (props) => {
 const navigate = useNavigate();
 
  return (
-      <Container>
+
 
      <Card className="mt-4"style={{ width: '15rem', borderRadius: "12px" }}>
       <Col className="d-flex flex-column justify-content-center">
@@ -86,7 +86,7 @@ const navigate = useNavigate();
       </Col>
       </Card>
 
-    </Container>
+ 
  )
 }
 export default connect(mapStateToProps)(LeftSideBar)

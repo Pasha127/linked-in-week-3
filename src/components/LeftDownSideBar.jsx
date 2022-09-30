@@ -3,8 +3,8 @@ import { Container, Col, Row, Button, Card} from "react-bootstrap";
 
 const LeftDownSideBar = () => {
   return (
-    <div>
-    <Container>
+  
+
      <Card className="mt-4"style={{ width: '15rem', borderRadius: "12px" }}>
         <Col className="px-0">
           <Row className="flex-column mt-2 mx-3">
@@ -83,8 +83,7 @@ const LeftDownSideBar = () => {
           </Row>
         </Col>
         </Card>
-      </Container>
-    </div>
+  
   );
 };
 
