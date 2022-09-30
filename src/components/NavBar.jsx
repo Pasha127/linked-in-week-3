@@ -34,11 +34,12 @@ return (<>
       
 
       <Navbar bg="light" expand="lg" className="Navbar">
-      <Container>
-    
-        <Navbar.Brand href="#home">
+      <Container>      
+        <Navbar.Brand href="/">
+        
               <i className="bi bi-linkedin "
               style={{color: "#0b65c2", fontSize: "35px"}}></i>
+           
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Nav className="me-auto">

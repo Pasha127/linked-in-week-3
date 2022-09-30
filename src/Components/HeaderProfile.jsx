@@ -1,5 +1,5 @@
 import { Card,Image, Row, Col, Button, Modal, ModalBody} from "react-bootstrap"
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { upload, uploadPicWithThunk } from "../app/redux/actions/actions";
 import { connect } from "react-redux";
 
@@ -16,21 +16,27 @@ const mapStateToProps = state => {
           dispatch(upload(file));
         },
         uploadToSite: (file,id) =>{
-          dispatch(uploadPicWithThunk(file,id))
-        }
-        
+              dispatch(uploadPicWithThunk(file,id))
+            }
+            
       };  
-    };
+};
+const imageMimeType = /image\/(png|jpg|jpeg|gif)/i;
 
 const HeaderProfile = (props) => {      
      
+      /* console.log(props.uploaded);
+      console.log(props.currentUser.image); */
 
       const uploadImage = ()=>{
             const formData = new FormData();
             formData.append("profile", props.uploaded);
             props.uploadToSite(formData,props.currentUser._id);
-        }
-     
+      }
+      const [previewPic, setPreviewPic] = useState({})
+
+      /* console.log(previewPic); */
+      
       const [show, setShow] = useState(false);
       const [show2, setShow2] = useState(false);
       const [show3, setShow3] = useState(false);
@@ -45,7 +51,51 @@ const HeaderProfile = (props) => {
       const handleClose3 = () => setShow3(false);
       const handleShow3 = () => setShow3(true);
 
-       
+      useEffect(()=>{setPreviewPic(props.uploaded); console.log(props.uploaded)
+      },[props.uploaded]) 
+
+      const [file, setFile] = useState(null);
+  const [fileDataURL, setFileDataURL] = useState(props.user.image);
+console.log(props.currentUser.image,fileDataURL,"fileDataUrl")
+
+
+  const changeHandler = () => {
+      const file = previewPic;
+      if (!file.type.match(imageMimeType)) {
+        alert("Image mime type is not valid");
+        return;
+      }
+      setFile(file);
+    }
+    useEffect(() => {
+      let fileReader, isCancel = false;
+      if (file) {
+        fileReader = new FileReader();
+        fileReader.onload = (e) => {
+          const { result } = e.target;
+          if (result && !isCancel) {
+            setFileDataURL(result)
+            
+            
+          }
+        }
+        fileReader.readAsDataURL(file);
+      }
+      return () => {
+        isCancel = true;
+        if (fileReader && fileReader.readyState === 1) {
+          fileReader.abort();
+        }
+      }
+  
+    }, [file]);
+ const prevUrlRef = useRef();
+
+    useEffect(()=>{setFileDataURL(props.user.image);
+    },[]) 
+
+
+      
 
 return (
       <Card className="mt-4"style={{ width: '46rem', borderRadius: "12px", height: "540px"}}>
@@ -67,7 +117,7 @@ return (
                               <Row className="justify-content-md-center">
                                     
                               <Image className=""
-                              src={props.user.image} roundedCircle 
+                              src={fileDataURL} roundedCircle 
                               style={{ height: "300px", width: "300px"}}/>
                           
                               </Row>
@@ -90,7 +140,7 @@ return (
                               <label className="text-white mt-2" htmlFor="picUploadBtn"><i className="bi bi-pencil mr-2" ></i>
                               <span id="userName">Edit</span></label>
                               <input type="file" className="d-none"  id="picUploadBtn" onChange={(e)=>{
-                              props.uploadToState(e.target.files[e.target.files.length-1],);}}>
+                              props.uploadToState(e.target.files[e.target.files.length-1]);changeHandler();}}>
                               </input>
                               </span>
 

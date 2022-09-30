@@ -27,7 +27,7 @@ const mapDispatchToProps = dispatch => {
 const AddPost = (props) => {
 
   const [text, setText] = useState('')
-
+  
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);

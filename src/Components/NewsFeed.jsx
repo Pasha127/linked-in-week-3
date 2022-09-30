@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { formatDistanceToNow } from 'date-fns'
 import { useState } from "react";
 import { editPostsWithThunk, deletePostsWithThunk} from "../app/redux/actions/actions";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -35,6 +36,7 @@ const mapDispatchToProps = dispatch => {
 
 
 const NewsFeed = (props) => {
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -42,6 +44,7 @@ const NewsFeed = (props) => {
   const handleClose2 = () => setShow2(false);
   const handleShow2 = () => setShow2(true);
   const [text, setText] = useState('');
+
   /* useEffect(()=>{
     props.getPosts()
   },[])  */
@@ -54,7 +57,11 @@ const NewsFeed = (props) => {
             <div className="d-flex ml-3">
               <div className="profilePicStyle">
            {props.user?.image ?   
-            <img className="profImg" src={props.user.image} alt="profile pic"/> :
+            <img className="profImg clickable" src={props.user.image} alt="profile pic" onClick={
+              () => {
+                navigate(`/profile/${props.user._id}`)
+                
+            }} /> :
                   <img src="https://media.istockphoto.com/vectors/user-avatar-profile-icon-black-vector-illustration-vector-id1209654046?k=20&m=1209654046&s=612x612&w=0&h=Atw7VdjWG8KgyST8AXXJdmBkzn0lvgqyWod9vTb2XoE=" alt="prof pic"/> }
               </div>
              <div className="postHeader">

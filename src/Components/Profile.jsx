@@ -61,7 +61,7 @@ const Profile = (props) => {
          {state.user &&
             <Row>
                <Col md={8}>
-                  <HeaderProfileFriend user={state.user} />
+                  <HeaderProfileFriend user={state.user} fetchUser={fetchUser} />
                   
                   <Experiences userId={state.user._id} canEdit={false}/>
                </Col>

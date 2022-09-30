@@ -42,7 +42,7 @@ const Experiences = (props) => {
 
 
    const fetchExperiences = async (id) => {
-      const options = {
+      if(id){const options = {
          method: 'GET',
          headers: {
             Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMxOGRiNDc2NTM5YzAwMTViNWNkNmEiLCJpYXQiOjE2NjQxOTE5MjQsImV4cCI6MTY2NTQwMTUyNH0.L96ybdKZjUiPLG95huiiaqlmfE5bLIunxqmgGUnOYBY'
@@ -67,7 +67,7 @@ const Experiences = (props) => {
          setLoading(
             false
          )
-      }
+      }}
    }
 
    return (

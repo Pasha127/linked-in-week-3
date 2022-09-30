@@ -25,7 +25,9 @@ const navigate = useNavigate();
           id="backgroundImage" fluid/>
 
         <Row className="d-flex flex-column align-items-center ">
-        <Image src={props.currentUser.image} roundedCircle id="userImage"/>
+        <Image className="clickable" src={props.currentUser.image}  roundedCircle id="userImage"onClick={() => {
+                navigate("/profile");
+              }} />
           <div className="mb-3 mt-n3 text-center">
             <div
               className="font-weight-bold mt-5"

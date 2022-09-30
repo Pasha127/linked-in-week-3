@@ -20,7 +20,7 @@ return (
                   <Image 
                   src="https://media.istockphoto.com/videos/defocused-seamless-loop-background-video-id1016831586?s=640x640"
                   style={{backgroundSize: "cover", height: "200px",  borderRadius: "10px 10px 0 0"}} fluid/>
-                   <Image className="ml-5"
+                   <Image  className="ml-5 clickable"
                    src={props.user.image} roundedCircle 
                    style={{ height: "150px", width: "150px", marginTop: "-100px", border: "5px solid white"}}
                    />
