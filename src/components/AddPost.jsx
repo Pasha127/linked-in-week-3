@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Image, Button, Card, Form, FormControl} from "react-bootstrap";
+import { Image, Button, Card, Form, FormControl, Modal, Row, Col} from "react-bootstrap";
 import { connect } from "react-redux";
 import { submitPostsWithThunk } from "../app/redux/actions/actions";
 
@@ -22,7 +22,14 @@ const mapDispatchToProps = dispatch => {
 };
 
 const AddPost = (props) => {
+
   const [text, setText] = useState('')
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
 
  /*  useEffect(()=>{
     props.something?()
@@ -44,6 +51,7 @@ return (
                 className="pl-4"
                 value={text}
                 onChange={(e)=>{setText(e.target.value)}}
+                onClick={handleShow}
                 style={{ backgroundColor: "white",
                   border: "1px solid grey",
                   borderRadius: "30px",
@@ -52,6 +60,95 @@ return (
                 }}
               />
             </Form> 
+
+            <Modal show={show} onHide={handleClose}>
+                  <Modal.Header closeButton>
+                      <Modal.Title>Create a post</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                      <Form className="w-100">
+                        <Row>
+                          <Col md={2}>
+                           <Image className="mt-1" style={{width: "60px", borderRadius: "50%"}} src={props.currentUser.image}/>
+                          </Col>
+                          <Col md={10}>
+                          <div className="font-weight-bold">
+                             {props.currentUser.name} {props.currentUser.surname}
+                         </div>
+                          <Button
+                            size="sm"
+                            variant="outline-dark"
+                            style={{ borderRadius: "30px", fontWeight: "bold", }}>
+                            <i class="bi bi-globe"></i> <span className="ml-2 mr-2">Anyone</span><i class="bi bi-caret-down-fill"></i>
+                         </Button>
+                         </Col>
+                      </Row>
+                       <Form.Group >
+                            <Form.Control
+                              style={{ marginTop: "-8px", fontSize: "17px", border: "none" }}
+                              className="mb-3 mt-3"
+                              placeholder="What do you want to talk about?"
+                              as="textarea" rows={5}
+                            />
+                        </Form.Group>
+                        <Row className="ml-2 mb-3 font-weight-bold">
+                          <div style={{color: "#0b65c2"}}>
+                            Add hastag
+                          </div>
+                        </Row>
+                        <Row>
+                          <Col md={10}>
+                          <span className="ml-2">
+                          <i className="bi bi-image-fill" style={{fontSize: "25px", color: "gray"}}></i>
+                          </span>
+                          <span className="ml-4"> 
+                          <i className="bi bi-play-btn-fill" style={{fontSize: "25px", color: "gray"}}></i>
+                          </span>
+                          <span className="ml-4">
+                          <i class="bi bi-card-list" style={{fontSize: "25px", color: "gray"}}></i>
+                          </span>
+                          <span className="ml-4">
+                          <i className="bi bi-briefcase-fill" style={{fontSize: "25px", color: "gray"}}></i>
+                          </span>
+                          <span className="ml-4">
+                          <i className="bi bi-star-fill" style={{fontSize: "25px", color: "gray"}}></i>
+                          </span>
+                          <span className="ml-4">
+                          <i className="bi bi-bar-chart-fill" style={{fontSize: "25px", color: "gray"}}></i>
+                          </span>
+                          <span className="ml-4">
+                          <i className="bi bi-three-dots" style={{fontSize: "25px", color: "gray"}}></i>
+                          </span>
+                          </Col>
+                          <Col md={2} className="pl-0">
+                          <Button
+                            variant="outline-dark"
+                            style={{ borderRadius: "30px", fontWeight: "bold"}}>
+                            Post
+                         </Button>
+                         </Col>
+                        </Row>
+              
+                         
+                         </Form>
+                  </Modal.Body>
+             
+            </Modal>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </div>
       <div className="d-flex justify-content-between mb-3 ml-4">
         <Button className="d-flex align-items-center font-weight-bolder" style={{color: "grey"}} variant="white">
