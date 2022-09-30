@@ -269,16 +269,16 @@ export const getPicsWithThunk = () => {
 
 
 
-export const postFeedImgWithThunk = (postObj,id) => {
+export const postFeedImgWithThunk = (postImg,id) => {
   const options = {
     method: 'POST',
         headers: {
           
             Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMxOGRiNDc2NTM5YzAwMTViNWNkNmEiLCJpYXQiOjE2NjQxOTE5MjQsImV4cCI6MTY2NTQwMTUyNH0.L96ybdKZjUiPLG95huiiaqlmfE5bLIunxqmgGUnOYBY'
         },
-        body: postObj
+        body: postImg
     };
-    const baseEndpoint = `https://striveschool-api.herokuapp.com/api/profile/${id}/picture`
+    const baseEndpoint = `https://striveschool-api.herokuapp.com/api/posts/${id}`
   console.log("1 submit-post-think")
   return async (dispatch, getState)=>{
     try {
@@ -299,7 +299,7 @@ export const postFeedImgWithThunk = (postObj,id) => {
 
 
 
-      export const submitPostsWithThunk = async (postObj, postImg) => {
+      export const submitPostsWithThunk = async (postObj, postImg = null) => {
           const options = {
               method: 'POST',
               headers: {
@@ -316,8 +316,8 @@ export const postFeedImgWithThunk = (postObj,id) => {
             dispatch(setLoading(true));
             const response = await fetch(baseEndpoint, options);
             if (response.ok) {
-              const  data  = await response.json()
-              dispatch(postFeedImgWithThunk(postImg, data))
+              const  data  = await response.json();
+              postImg && dispatch(postFeedImgWithThunk(postImg, data._id));
             } else {
               alert('Error fetching results')
             }
