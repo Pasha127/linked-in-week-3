@@ -1,17 +1,22 @@
-import { Modal, Row, Button, Card, Form, FormControl} from "react-bootstrap";
+import { Modal, Row, Button, Card, Form, Col, Image} from "react-bootstrap";
 /* import {Image as CloudImage } from "cloudinary-react"
 import { useEffect } from "react"; */
 import { connect } from "react-redux";
 import { formatDistanceToNow } from 'date-fns'
 import { useState } from "react";
-import { deletePostsWithThunk} from "../app/redux/actions/actions";
+import { editPostsWithThunk, deletePostsWithThunk} from "../app/redux/actions/actions";
+
+
 
 
 
 const mapStateToProps = state => {
   return {
-  /* uploaded: state.logic.upload,
-  currentUser: state.user.activeUser */
+    uploaded: state.logic.upload,
+    loadState: state.logic.loading,
+    postList: state.logic.posts,
+    feed: state.logic.feed,
+    currentUser: state.user.activeUser
   };
 };
 
@@ -19,6 +24,9 @@ const mapDispatchToProps = dispatch => {
   return {    
     deletePost: postId => {
       dispatch(deletePostsWithThunk(postId))
+    },
+    editPost: (text, postId) => {
+      dispatch(editPostsWithThunk({text},postId))
     }
   };  
 };
@@ -30,6 +38,10 @@ const NewsFeed = (props) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [show2, setShow2] = useState(false);
+  const handleClose2 = () => setShow2(false);
+  const handleShow2 = () => setShow2(true);
+  const [text, setText] = useState('');
   /* useEffect(()=>{
     props.getPosts()
   },[])  */
@@ -77,12 +89,18 @@ const NewsFeed = (props) => {
             <Modal.Header closeButton>
             <Modal.Title style={{fontSize: "20px"}}>Options:</Modal.Title>
             </Modal.Header>
-            <Modal.Body>
+            <Modal.Body className="py-0">
                   <div className="mb-3" style={{fontSize: "20px"}}>Post Actions:</div>
-            <Row className="ml-1">
+            <Row className="ml-1 py-2">
               <div onClick={()=>{handleClose();props.deletePost(props.postId)}} >                
                   <i className="bi bi-trash clickable" style={{fontSize: "20px"}}></i>
                   <span className="ml-4 mt-1 clickable font-weight-bold">Delete Post</span>
+              </div>
+            </Row>
+            <Row className="ml-1 py-2 border-top">
+              <div onClick={()=>{handleClose();handleShow2();}} >                
+                  <i className="bi bi-pencil clickable " style={{fontSize: "20px"}}></i>
+                  <span className="ml-4 mt-1 clickable font-weight-bold">Edit Post</span>
               </div>
             </Row>
                  
@@ -93,6 +111,85 @@ const NewsFeed = (props) => {
             </Button>
             </Modal.Footer>
       </Modal>
+
+      <Modal show={show2} onHide={handleClose2}>
+                  <Modal.Header closeButton>
+                      <Modal.Title>Edit your post</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                      <Form className="w-100">
+                        <Row>
+                          <Col md={2}>
+                           <Image className="mt-1" style={{width: "60px", borderRadius: "50%"}} src={props.currentUser.image}/>
+                          </Col>
+                          <Col md={10}>
+                          <div className="font-weight-bold">
+                             {props.currentUser.name} {props.currentUser.surname}
+                         </div>
+                          <Button
+                            size="sm"
+                            variant="outline-dark"
+                            style={{ borderRadius: "30px", fontWeight: "bold", }}>
+                            <i className="bi bi-globe"></i> <span className="ml-2 mr-2">Anyone</span><i className="bi bi-caret-down-fill"></i>
+                         </Button>
+                         </Col>
+                      </Row>
+                       <Form.Group >
+                            <Form.Control
+                              style={{ marginTop: "-8px", fontSize: "17px", border: "none" }}
+                              className="mb-3 mt-3"
+                              onChange={(e)=>{setText(e.target.value);}}
+                              placeholder={props.text}
+                              as="textarea" rows={5}
+                            />
+                        </Form.Group>
+                        {/* <Row className="ml-2 mb-3 font-weight-bold">
+                          <div style={{color: "#0b65c2"}}>
+                            Add hastag
+                          </div>
+                        </Row> */}
+                        <Row>
+                          {/* <Col md={10}>
+                          <span className="ml-2">
+                          <label htmlFor="picUploadBtn"><i className="bi bi-image-fill" style={{fontSize: "25px", color: "gray"}}></i></label>
+                          <input type="file" className="d-none" id="picUploadBtn"
+                          onChange={(e)=>{
+                            props.uploadToState(e.target.files[e.target.files.length-1],);}}></input>
+                          </span>
+                          <span className="ml-4"> 
+                          <i className="bi bi-play-btn-fill" style={{fontSize: "25px", color: "gray"}}></i>
+                          </span>
+                          <span className="ml-4">
+                          <i className="bi bi-card-list" style={{fontSize: "25px", color: "gray"}}></i>
+                          </span>
+                          <span className="ml-4">
+                          <i className="bi bi-briefcase-fill" style={{fontSize: "25px", color: "gray"}}></i>
+                          </span>
+                          <span className="ml-4">
+                          <i className="bi bi-star-fill" style={{fontSize: "25px", color: "gray"}}></i>
+                          </span>
+                          <span className="ml-4">
+                          <i className="bi bi-bar-chart-fill" style={{fontSize: "25px", color: "gray"}}></i>
+                          </span>
+                          <span className="ml-4">
+                          <i className="bi bi-three-dots" style={{fontSize: "25px", color: "gray"}}></i>
+                          </span>
+                          </Col> */}
+                          <Col md={2} className="pl-0 ml-auto">
+                          <Button 
+                            onClick={()=>{props.editPost(text, props.postId)}}                         
+                            variant="outline-dark"
+                            style={{ borderRadius: "30px", fontWeight: "bold"}}>
+                            Post
+                         </Button>
+                         </Col>
+                        </Row>
+              
+                         
+                         </Form>
+                  </Modal.Body>
+             
+            </Modal>
                         </>
    
 )
