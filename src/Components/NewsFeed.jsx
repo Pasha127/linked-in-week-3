@@ -1,9 +1,31 @@
 import { Modal, Row, Button, Card, Form, FormControl} from "react-bootstrap";
-import {Image as CloudImage } from "cloudinary-react"
-import { useEffect } from "react";
+/* import {Image as CloudImage } from "cloudinary-react"
+import { useEffect } from "react"; */
 import { connect } from "react-redux";
 import { formatDistanceToNow } from 'date-fns'
 import { useState } from "react";
+import { deletePostsWithThunk} from "../app/redux/actions/actions";
+
+
+
+const mapStateToProps = state => {
+  return {
+  /* uploaded: state.logic.upload,
+  currentUser: state.user.activeUser */
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {    
+    deletePost: postId => {
+      dispatch(deletePostsWithThunk(postId))
+    }
+  };  
+};
+
+
+
+
 const NewsFeed = (props) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -11,6 +33,9 @@ const NewsFeed = (props) => {
   /* useEffect(()=>{
     props.getPosts()
   },[])  */
+
+
+
   return (<>
      
        <Card className="mt-3 postCard"style={{ width: '33rem', borderRadius: "12px" }}>
@@ -50,20 +75,17 @@ const NewsFeed = (props) => {
       </Card>
       <Modal show={show} onHide={handleClose} className="modal-image">
             <Modal.Header closeButton>
-            <Modal.Title style={{fontSize: "20px"}}>{props.user.name} {props.user.surname}</Modal.Title>
+            <Modal.Title style={{fontSize: "20px"}}>Options:</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                  <div className="mb-3" style={{fontSize: "20px"}}>Contact Info</div>
+                  <div className="mb-3" style={{fontSize: "20px"}}>Post Actions:</div>
             <Row className="ml-1">
-                  <i className="bi bi-linkedin" style={{fontSize: "20px"}}></i>
-                  <span className="ml-4 mt-1 font-weight-bold">Your profile</span>
+              <div onClick={()=>{handleClose();props.deletePost(props.postId)}} >                
+                  <i className="bi bi-trash clickable" style={{fontSize: "20px"}}></i>
+                  <span className="ml-4 mt-1 clickable font-weight-bold">Delete Post</span>
+              </div>
             </Row>
-                  <div className="font-weight-bold ml-5" style={{color: "#0b65c2", fontSize: "14px"}}>linkedin.com/in/{props.user._id}</div>
-            <Row className="ml-1 mt-3">
-                  <i className="bi bi-envelope" style={{fontSize: "20px"}}></i>
-                  <span className="ml-4 mt-1 font-weight-bold">Email</span>
-            </Row>
-                  <div className="font-weight-bold ml-5" style={{color: "#0b65c2", fontSize: "14px"}}>{props.user.email}</div>
+                 
             </Modal.Body>
             <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
@@ -77,4 +99,4 @@ const NewsFeed = (props) => {
 
 
 }
-export default /*  connect(mapStateToProps, mapDispatchToProps) */(NewsFeed)
+export default  connect(mapStateToProps, mapDispatchToProps)(NewsFeed)

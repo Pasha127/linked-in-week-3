@@ -125,3 +125,6 @@ div.spinner-border{
   text-decoration: underline;
   cursor: pointer;
 }
+.clickable{
+  cursor: pointer;
+}

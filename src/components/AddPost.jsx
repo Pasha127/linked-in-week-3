@@ -31,6 +31,12 @@ const AddPost = (props) => {
   const handleShow = () => setShow(true);
 
 
+  const uploadImage = ()=>{
+    const formData = new FormData();
+    formData.append("profile", props.uploaded)
+    props.uploadToSite(formData,props.currentUser._id);
+}
+
  /*  useEffect(()=>{
     props.something?()
   },[]) 
@@ -79,7 +85,7 @@ return (
                             size="sm"
                             variant="outline-dark"
                             style={{ borderRadius: "30px", fontWeight: "bold", }}>
-                            <i class="bi bi-globe"></i> <span className="ml-2 mr-2">Anyone</span><i class="bi bi-caret-down-fill"></i>
+                            <i className="bi bi-globe"></i> <span className="ml-2 mr-2">Anyone</span><i class="bi bi-caret-down-fill"></i>
                          </Button>
                          </Col>
                       </Row>
@@ -99,13 +105,14 @@ return (
                         <Row>
                           <Col md={10}>
                           <span className="ml-2">
-                          <i className="bi bi-image-fill" style={{fontSize: "25px", color: "gray"}}></i>
+                          <label htmlFor="picUploadBtn"><i className="bi bi-image-fill" style={{fontSize: "25px", color: "gray"}}></i></label>
+                          <input type="file" className="d-none" id="picUploadBtn"></input>
                           </span>
                           <span className="ml-4"> 
                           <i className="bi bi-play-btn-fill" style={{fontSize: "25px", color: "gray"}}></i>
                           </span>
                           <span className="ml-4">
-                          <i class="bi bi-card-list" style={{fontSize: "25px", color: "gray"}}></i>
+                          <i className="bi bi-card-list" style={{fontSize: "25px", color: "gray"}}></i>
                           </span>
                           <span className="ml-4">
                           <i className="bi bi-briefcase-fill" style={{fontSize: "25px", color: "gray"}}></i>
@@ -123,7 +130,8 @@ return (
                           <Col md={2} className="pl-0">
                           <Button
                             variant="outline-dark"
-                            style={{ borderRadius: "30px", fontWeight: "bold"}}>
+                            style={{ borderRadius: "30px", fontWeight: "bold"}}
+                            onClick={()=>{handleClose()}}>
                             Post
                          </Button>
                          </Col>

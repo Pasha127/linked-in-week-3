@@ -11,6 +11,7 @@ export  const GET_MORE_POSTS = "GET_MORE_POSTS";
 export  const ADD_TO_FEED = "ADD_TO_FEED";
 export  const GET_PICS = "GET_PICS";
 export  const UPLOAD = "UPLOAD";
+export  const DELETE = "DELETE";
 
 
 export const setLoading =isLoading =>({
@@ -64,6 +65,10 @@ export const getPics =posts =>({
 export const upload =posts =>({
     type: UPLOAD,
     payload: posts
+  });
+export const delPost =post =>({
+    type: DELETE,
+    payload: post
   });
 
 export const handleFetchWithThunk = (id) => {
@@ -151,6 +156,30 @@ export const getPostsWithThunk = () => {
     }finally{/* console.log("3 get-post-thunk") */;dispatch(setLoading(false));}
   }}
   
+export const deletePostsWithThunk = (id) => {
+    const options = {
+        method: 'DELETE',
+        headers: {
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMxOGRiNDc2NTM5YzAwMTViNWNkNmEiLCJpYXQiOjE2NjQxOTE5MjQsImV4cCI6MTY2NTQwMTUyNH0.L96ybdKZjUiPLG95huiiaqlmfE5bLIunxqmgGUnOYBY'
+        }
+    };
+  const baseEndpoint = 'https://striveschool-api.herokuapp.com/api/posts/'
+  return async (dispatch, getState)=>{
+    try {
+      
+      dispatch(setLoading(true));
+      const response = await fetch(baseEndpoint + id, options);
+      if (response.ok) {    
+        dispatch(delPost(id))        
+       console.log("deleted");
+      } else {
+        alert('Error fetching results')
+      }
+    } catch (error) {
+      /* console.log(error) */
+    }finally{ console.log("3 Del-post-thunk");dispatch(setLoading(false));handleFetchWithThunk();}
+  }}
+  
   
   
   export const getMorePostsWithThunk = (posts, n=2) => {
@@ -231,7 +260,7 @@ export const getPostsWithThunk = () => {
         console.log(error)
       }finally{console.log("3 submit-post-thunk");dispatch(setLoading(false));}
     }}
-
+    
     
 const pexelKey= "563492ad6f917000010000015080b999c314478fa318b5c998a262de"
 

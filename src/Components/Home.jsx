@@ -81,7 +81,7 @@ return(
 
       >
           {<div>
-            {props.feed.map((post, index)=><NewsFeed key={index} user={post.user} image={post.image} createdAt={post.createdAt} username={post.username} text={post.text}  />)}
+            {props.feed.map((post, index)=><NewsFeed key={index} user={post.user} image={post.image} createdAt={post.createdAt} username={post.username} text={post.text} postId={post._id}  />)}
             </div>}   
       </InfiniteScroll>
      

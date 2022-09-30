@@ -1,5 +1,5 @@
 import { initialState } from "../store/store";
-import { LOADING,SEARCH, LIKE, UNLIKE, GET_POSTS, GET_MORE_POSTS, ADD_TO_FEED, GET_PICS, UPLOAD } from "../actions/actions";
+import { LOADING,SEARCH, LIKE, UNLIKE, GET_POSTS, GET_MORE_POSTS, ADD_TO_FEED, GET_PICS, UPLOAD, DELETE } from "../actions/actions";
 const logicReducer = (state = initialState.logic, action) => {
     switch (action.type) {
       case LOADING:
@@ -21,7 +21,7 @@ const logicReducer = (state = initialState.logic, action) => {
       case UNLIKE:
         return {
           ...state,
-         liked: state.liked.filter((post) => post._id !== action.payload._id)    
+         liked: [...state.liked.filter((post) => post._id !== action.payload._id)]    
         }; 
       case GET_POSTS:
         return{
@@ -47,6 +47,11 @@ const logicReducer = (state = initialState.logic, action) => {
         return{
           ...state,
           upload: action.payload
+        }      
+      case DELETE:
+        return{
+          ...state,
+          posts: [...state.posts.filter((post) => post._id !== action.payload._id)]
         }      
       
       default:
