@@ -81,7 +81,7 @@ const Experiences = (props) => {
             {props.canEdit &&
                <Col md={2} className="mt-4">
                   <Button variant="light" style={{ borderRadius: "50%" }}
-                     onClick={handleShowAddModal}><i class="bi bi-plus-lg"></i>
+                     onClick={handleShowAddModal}><i className="bi bi-plus-lg"></i>
                   </Button>
                </Col>
             }
@@ -96,7 +96,7 @@ const Experiences = (props) => {
                      {props.canEdit &&
                         <Col md={2}>
                            <Button variant="light" style={{ borderRadius: "100%" }}
-                              onClick={() => handleShowEditModal(experience)}><i class="bi bi-pencil"></i>
+                              onClick={() => handleShowEditModal(experience)}><i className="bi bi-pencil"></i>
                            </Button>
                         </Col>
                      }

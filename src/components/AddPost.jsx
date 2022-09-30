@@ -85,7 +85,7 @@ return (
                             size="sm"
                             variant="outline-dark"
                             style={{ borderRadius: "30px", fontWeight: "bold", }}>
-                            <i className="bi bi-globe"></i> <span className="ml-2 mr-2">Anyone</span><i class="bi bi-caret-down-fill"></i>
+                            <i className="bi bi-globe"></i> <span className="ml-2 mr-2">Anyone</span><i className="bi bi-caret-down-fill"></i>
                          </Button>
                          </Col>
                       </Row>
