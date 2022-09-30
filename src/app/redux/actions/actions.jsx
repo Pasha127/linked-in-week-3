@@ -170,7 +170,8 @@ export const deletePostsWithThunk = (id) => {
       dispatch(setLoading(true));
       const response = await fetch(baseEndpoint + id, options);
       if (response.ok) {    
-        dispatch(delPost(id))        
+       await  dispatch(delPost(id))   
+           
        console.log("deleted");
       } else {
         alert('Error fetching results')
