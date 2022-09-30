@@ -27,7 +27,7 @@ const HeaderProfile = (props) => {
 
       const uploadImage = ()=>{
             const formData = new FormData();
-            formData.append("profile", props.uploaded)
+            formData.append("profile", props.uploaded);
             props.uploadToSite(formData,props.currentUser._id);
         }
      

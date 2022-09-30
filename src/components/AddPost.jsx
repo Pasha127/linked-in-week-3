@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Image, Button, Card, Form, FormControl, Modal, Row, Col} from "react-bootstrap";
 import { connect } from "react-redux";
-import { submitPostsWithThunk } from "../app/redux/actions/actions";
+import { upload, submitPostsWithThunk } from "../app/redux/actions/actions";
 
 const mapStateToProps = state => {
   return {
+  uploaded: state.logic.upload,
   loadState: state.logic.loading,
   postList: state.logic.posts,
   feed: state.logic.feed,
@@ -14,6 +15,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    uploadToState: file => {
+      dispatch(upload(file));
+    },
     sendPost: (text,img)=> { 
             dispatch(submitPostsWithThunk({text},img));
     }
@@ -32,8 +36,13 @@ const AddPost = (props) => {
 
   const uploadImage = (text)=>{
     const formData = new FormData();
-    formData.append("profile", props.uploaded)
-     props.sendPost(text, formData); 
+    console.log("image to be uploaded:",props.uploaded);
+    formData.append("post", props.uploaded)
+    /* for(let key of formData.entries()){
+      console.log(key) 
+    }*/
+     console.log("doesitdata?",formData) 
+      props.sendPost(text, formData);  
      setText('');
   }
 
@@ -56,7 +65,7 @@ return (
                 placeholder="Start a post"
                 className="pl-4"
                 value="Start a post"
-                onClick={handleShow}
+                onClick={()=>{handleShow();props.uploadToState({})}}
                 style={{ backgroundColor: "white",
                 border: "1px solid grey",
                 borderRadius: "30px",
@@ -107,7 +116,9 @@ return (
                           <Col md={10}>
                           <span className="ml-2">
                           <label htmlFor="picUploadBtn"><i className="bi bi-image-fill" style={{fontSize: "25px", color: "gray"}}></i></label>
-                          <input type="file" className="d-none" id="picUploadBtn"></input>
+                          <input type="file" className="d-none" id="picUploadBtn"
+                          onChange={(e)=>{
+                            props.uploadToState(e.target.files[e.target.files.length-1],);}}></input>
                           </span>
                           <span className="ml-4"> 
                           <i className="bi bi-play-btn-fill" style={{fontSize: "25px", color: "gray"}}></i>

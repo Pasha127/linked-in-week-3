@@ -323,7 +323,10 @@ export const postFeedImgWithThunk = (postImg,id) => {
             const response = await fetch(baseEndpoint, options);
             if (response.ok) {
               const  data  = await response.json();
-              postImg.length >0 ? dispatch(postFeedImgWithThunk(postImg, data._id)):window.location.reload();
+              console.log("postDataResponse:",data, postImg);
+              for(let key of postImg.entries()){
+                console.log(key)}
+               /* postImg.length >0 ?  */dispatch(postFeedImgWithThunk(postImg, data._id))/* :console.log("nodata") */; 
             } else {
               alert('Error fetching results')
             }
