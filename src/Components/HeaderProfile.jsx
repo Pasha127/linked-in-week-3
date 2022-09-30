@@ -44,27 +44,30 @@ return (
                               style={{ height: "300px", width: "300px"}}/>
                           
                               </Row>
-                              <Row className="mt-3 ml-2">
+                              <Row className="mt-4 ml-2">
                                <Button
                               variant="outline-light"
                               style={{ borderRadius: "30px", fontWeight: "bold"}}>
                               <i className="bi bi-eye-fill"></i><span className="ml-2">Anyone</span>
                               </Button>
                               </Row>
-                              <Row className="mt-2">
-                              <div className="ml-4">
+
+                              <Row className="mt-2 pl-2">
+                              <Button variant="outline-light ml-3">
                                <i className="bi bi-pencil mr-2" style={{color: "white",}}></i>
                                <span style={{color: "white"}}>Edit</span>
-                               </div>
-                               <div className="ml-4">
+                              </Button>
+                              <Button variant="outline-light ml-3">
                                <i className="bi bi-camera-fill mr-2"style={{color: "white"}}></i>
                                <span style={{color: "white"}}>Add photo</span>
-                               </div>
-                               <div className="ml-4">
+                               </Button>
+                           
+                               <Button variant="outline-light ml-3">
                                <i className="bi bi-image-fill mr-2" style={{color: "white"}}></i>
                                <span style={{color: "white"}}>Frames</span>
-                               </div>
-                               <Button variant="outline-light" style={{marginLeft: "370px"}}>
+                               </Button>
+                           
+                               <Button variant="outline-light" style={{marginLeft: "320px"}}>
                                <i class="bi bi-trash3-fill mr-2"></i>
                                      Delete</Button>
                                </Row>
