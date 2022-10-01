@@ -27,8 +27,8 @@ const persistedReducer = persistReducer(persistConfig, bigReducer)
 
 
 export const store = configureStore({
-  /* reducer: persistedReducer, */
-  reducer:bigReducer,
+  reducer: persistedReducer,
+  /* reducer:bigReducer, */
   devTools: process.env.NODE_ENV !== 'production',
   middleware: [thunk]
 })
