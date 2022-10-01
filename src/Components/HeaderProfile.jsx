@@ -94,7 +94,8 @@ console.log(props.currentUser.image,fileDataURL,"fileDataUrl")
       }
   
     }, [file]); 
- const prevUrlRef = useRef();
+/*  const prevUrl = useRef().current;
+ console.log(prevUrl,"prevURL") */
 
     useEffect(()=>{setFileDataURL(props.user.image);
     },[props.user.image]) 

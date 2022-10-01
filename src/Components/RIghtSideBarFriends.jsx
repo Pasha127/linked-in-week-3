@@ -9,6 +9,9 @@ const RightSideBarFriends = (props) => {
 
     <div className="d-flex pb-3">
       <Image src={props.friend.image}
+      onClick={() => {
+        navigate(`/profile/${props.friend._id}`);
+        window.location.reload();}}
         style={{ width: "40px", height: "40px" }}
         roundedCircle />
       <div className="profile-details ml-2">

@@ -13,7 +13,11 @@ const FriendComponent = (props)=>{
                   <div className="d-flex">
                   <div className="profilePicStyle">
            {props.friend?.image ?   
-            <img className="profImg" src={props.friend?.image} alt="profile pic"/> :
+            <img className="profImg clickable" 
+            onClick={() => {
+                navigate(`/profile/${props.friend._id}`);
+                window.location.reload();}}
+                 src={props.friend?.image} alt="profile pic"/> :
                   <img src="https://media.istockphoto.com/vectors/user-avatar-profile-icon-black-vector-illustration-vector-id1209654046?k=20&m=1209654046&s=612x612&w=0&h=Atw7VdjWG8KgyST8AXXJdmBkzn0lvgqyWod9vTb2XoE=" alt="prof pic"/> }
               </div>
                     <div className="profile-details ml-2 mt-2">
