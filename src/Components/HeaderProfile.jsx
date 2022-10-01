@@ -1,6 +1,6 @@
 import { Card,Image, Row, Col, Button, Modal, ModalBody} from "react-bootstrap"
 import { useEffect, useRef, useState } from "react";
-import { upload, uploadPicWithThunk } from "../app/redux/actions/actions";
+import { tempPicWithThunk, upload, uploadPicWithThunk } from "../app/redux/actions/actions";
 import { connect } from "react-redux";
 
 const mapStateToProps = state => {
@@ -12,8 +12,8 @@ const mapStateToProps = state => {
     
     const mapDispatchToProps = dispatch => {
       return {
-        uploadToState: file => {
-          dispatch(upload(file));
+        uploadToState: (file, func) => {
+          dispatch(tempPicWithThunk(file, func));          
         },
         uploadToSite: (file,id) =>{
               dispatch(uploadPicWithThunk(file,id))
@@ -51,21 +51,26 @@ const HeaderProfile = (props) => {
       const handleClose3 = () => setShow3(false);
       const handleShow3 = () => setShow3(true);
 
-      useEffect(()=>{setPreviewPic(props.uploaded); console.log(props.uploaded)
+      useEffect(()=>{setPreviewPic(props.uploaded); console.log("upload change preview set",props.uploaded)
       },[props.uploaded]) 
+      useEffect(()=>{setPreviewPic(props.currentUser.image); console.log("initial preview set",props.currentUser.image)
+      },[]) 
 
       const [file, setFile] = useState(null);
-  const [fileDataURL, setFileDataURL] = useState(props.user.image);
+      const [fileDataURL, setFileDataURL] = useState(props.user.image);
+
+
 console.log(props.currentUser.image,fileDataURL,"fileDataUrl")
 
 
   const changeHandler = () => {
       const file = previewPic;
-      if (!file.type.match(imageMimeType)) {
+      /* if (!file.type.match(imageMimeType)) {
         alert("Image mime type is not valid");
         return;
-      }
+      } */
       setFile(file);
+      
     }
     useEffect(() => {
       let fileReader, isCancel = false;
@@ -88,11 +93,11 @@ console.log(props.currentUser.image,fileDataURL,"fileDataUrl")
         }
       }
   
-    }, [file]);
+    }, [file]); 
  const prevUrlRef = useRef();
 
     useEffect(()=>{setFileDataURL(props.user.image);
-    },[]) 
+    },[props.user.image]) 
 
 
       
@@ -137,10 +142,10 @@ return (
                                <span>Edit</span>
                               </Button> */}
                               <span className="ml-2">
-                              <label className="text-white mt-2" htmlFor="picUploadBtn"><i className="bi bi-pencil mr-2" ></i>
+                              <label className=" btn btn-outline-light my-0 " htmlFor="picUploadBtn"><i className="bi bi-pencil mr-2" ></i>
                               <span id="userName">Edit</span></label>
                               <input type="file" className="d-none"  id="picUploadBtn" onChange={(e)=>{
-                              props.uploadToState(e.target.files[e.target.files.length-1]);changeHandler();}}>
+                              props.uploadToState(e.target.files[e.target.files.length-1],changeHandler);}}>
                               </input>
                               </span>
 

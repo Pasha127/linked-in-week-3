@@ -364,3 +364,14 @@ export const postFeedImgWithThunk = (postImg,id) => {
             console.log(error)
           }finally{console.log("3 submit-post-thunk");dispatch(setLoading(false));}
         }}
+
+        export const tempPicWithThunk = (file,changeHandler)=>{
+          return async(dispatch, getState)=>{
+            await dispatch(upload(file));
+            changeHandler()
+
+          }
+
+          
+         
+        }
