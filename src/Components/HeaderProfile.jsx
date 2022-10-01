@@ -65,10 +65,10 @@ console.log(props.currentUser.image,fileDataURL,"fileDataUrl")
 
   const changeHandler = () => {
       const file = previewPic;
-      /* if (!file.type.match(imageMimeType)) {
+      if (!file.type.match(imageMimeType)) {
         alert("Image mime type is not valid");
         return;
-      } */
+      }
       setFile(file);
       
     }
