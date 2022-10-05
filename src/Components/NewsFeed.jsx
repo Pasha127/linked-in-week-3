@@ -77,7 +77,7 @@ const NewsFeed = (props) => {
       <div className="mb-2">
         {props.image ?
         <img className="postImg" src={props.image} alt="post "/> :
-       <img src= "http://placekitten.com/528/400" alt="post"/> }
+       <div></div>}
       </div>
       <div className="interactionsContainer mb-2">
           <div> <i className="bi bi-hand-thumbs-up ml-4"></i></div>
