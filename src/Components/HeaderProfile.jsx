@@ -12,8 +12,8 @@ const mapStateToProps = state => {
     
     const mapDispatchToProps = dispatch => {
       return {
-        uploadToState: (file, func) => {
-          dispatch(tempPicWithThunk(file, func));          
+        uploadToState: (file) => {
+          dispatch(upload(file));          
         },
         uploadToSite: (file,id) =>{
               dispatch(uploadPicWithThunk(file,id))
@@ -21,22 +21,16 @@ const mapStateToProps = state => {
             
       };  
 };
-const imageMimeType = /image\/(png|jpg|jpeg|gif)/i;
+const imageMimeType = /image\/(png|jpg|jpeg|gif)/i; 
 
-const HeaderProfile = (props) => {      
-     
-      /* console.log(props.uploaded);
-      console.log(props.currentUser.image); */
+const HeaderProfile = (props) => {  
 
       const uploadImage = ()=>{
             const formData = new FormData();
             formData.append("profile", props.uploaded);
             props.uploadToSite(formData,props.currentUser._id);
       }
-      const [previewPic, setPreviewPic] = useState({})
-
-      /* console.log(previewPic); */
-      
+     
       const [show, setShow] = useState(false);
       const [show2, setShow2] = useState(false);
       const [show3, setShow3] = useState(false);
@@ -51,10 +45,7 @@ const HeaderProfile = (props) => {
       const handleClose3 = () => setShow3(false);
       const handleShow3 = () => setShow3(true);
 
-      useEffect(()=>{setPreviewPic(props.uploaded); console.log("upload change preview set",props.uploaded)
-      },[props.uploaded]) 
-      useEffect(()=>{setPreviewPic(props.currentUser.image); console.log("initial preview set",props.currentUser.image)
-      },[]) 
+     
 
       const [file, setFile] = useState(null);
       const [fileDataURL, setFileDataURL] = useState(props.user.image);
@@ -63,13 +54,16 @@ const HeaderProfile = (props) => {
 console.log(props.currentUser.image,fileDataURL,"fileDataUrl")
 
 
-  const changeHandler = () => {
-      const file = previewPic;
-      if (!file.type.match(imageMimeType)) {
+  const changeHandler = (e) => {
+      const target = (e.target.files[e.target.files.length-1]);
+       
+       props.uploadToState(target);     
+      const file = target;
+       if (!file.type.match(imageMimeType)) {
         alert("Image mime type is not valid");
         return;
-      }
-      setFile(file);
+      } 
+      setFile(file); 
       
     }
     useEffect(() => {
@@ -94,14 +88,9 @@ console.log(props.currentUser.image,fileDataURL,"fileDataUrl")
       }
   
     }, [file]); 
-/*  const prevUrl = useRef().current;
- console.log(prevUrl,"prevURL") */
 
     useEffect(()=>{setFileDataURL(props.user.image);
     },[props.user.image]) 
-
-
-      
 
 return (
       <Card className="mt-4"style={{ width: '46rem', borderRadius: "12px", height: "540px"}}>
@@ -115,7 +104,7 @@ return (
                    />
 
 
-                         <Modal size="lg" show={show3} onHide={handleClose3} className="modal-image">
+                         <Modal size="lg" show={show3} onHide={() => {handleClose3();setFileDataURL(props.user.image)}} className="modal-image">
                               <Modal.Header closeButton  style={{backgroundColor: "#1d2226"}}>
                               <Modal.Title className="font-weight-bold" style={{fontSize: "20px", color: "white"}}>Profile photo</Modal.Title>
                               </Modal.Header>
@@ -145,8 +134,8 @@ return (
                               <span className="ml-2">
                               <label className=" btn btn-outline-light my-0 " htmlFor="picUploadBtn"><i className="bi bi-pencil mr-2" ></i>
                               <span id="userName">Edit</span></label>
-                              <input type="file" className="d-none"  id="picUploadBtn" onChange={(e)=>{
-                              props.uploadToState(e.target.files[e.target.files.length-1],changeHandler);}}>
+                              <input type="file" className="d-none"  id="picUploadBtn" onChange={(e)=>
+                              changeHandler(e)}>
                               </input>
                               </span>
 
