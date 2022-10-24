@@ -76,7 +76,7 @@ export const handleFetchWithThunk = (id) => {
     const options = {
         method: 'GET',
         headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMxOGRiNDc2NTM5YzAwMTViNWNkNmEiLCJpYXQiOjE2NjQxOTE5MjQsImV4cCI6MTY2NTQwMTUyNH0.L96ybdKZjUiPLG95huiiaqlmfE5bLIunxqmgGUnOYBY'
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzA3ODg0NDFlYjc2ZDAwMTUxNTAxZjgiLCJpYXQiOjE2NjY2NDE3MTMsImV4cCI6MTY2Nzg1MTMxM30.vxYdNt2LLznO0U7RmaS7_xKllgxqLcMKZcHjSJAR-ok'
         }
     };
  const baseEndpoint = 'https://striveschool-api.herokuapp.com/api/profile/'
@@ -104,7 +104,7 @@ export const getFriendsWithThunk = () => {
     const options = {
         method: 'GET',
         headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMxOGRiNDc2NTM5YzAwMTViNWNkNmEiLCJpYXQiOjE2NjQxOTE5MjQsImV4cCI6MTY2NTQwMTUyNH0.L96ybdKZjUiPLG95huiiaqlmfE5bLIunxqmgGUnOYBY'
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzA3ODg0NDFlYjc2ZDAwMTUxNTAxZjgiLCJpYXQiOjE2NjY2NDE3MTMsImV4cCI6MTY2Nzg1MTMxM30.vxYdNt2LLznO0U7RmaS7_xKllgxqLcMKZcHjSJAR-ok'
         }
     };
   const baseEndpoint = 'https://striveschool-api.herokuapp.com/api/profile/'
@@ -132,7 +132,7 @@ export const getPostsWithThunk = () => {
     const options = {
         method: 'GET',
         headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMxOGRiNDc2NTM5YzAwMTViNWNkNmEiLCJpYXQiOjE2NjQxOTE5MjQsImV4cCI6MTY2NTQwMTUyNH0.L96ybdKZjUiPLG95huiiaqlmfE5bLIunxqmgGUnOYBY'
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzA3ODg0NDFlYjc2ZDAwMTUxNTAxZjgiLCJpYXQiOjE2NjY2NDE3MTMsImV4cCI6MTY2Nzg1MTMxM30.vxYdNt2LLznO0U7RmaS7_xKllgxqLcMKZcHjSJAR-ok'
         }
     };
   const baseEndpoint = 'https://striveschool-api.herokuapp.com/api/posts/'
@@ -160,7 +160,7 @@ export const deletePostsWithThunk = (id) => {
     const options = {
         method: 'DELETE',
         headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMxOGRiNDc2NTM5YzAwMTViNWNkNmEiLCJpYXQiOjE2NjQxOTE5MjQsImV4cCI6MTY2NTQwMTUyNH0.L96ybdKZjUiPLG95huiiaqlmfE5bLIunxqmgGUnOYBY'
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzA3ODg0NDFlYjc2ZDAwMTUxNTAxZjgiLCJpYXQiOjE2NjY2NDE3MTMsImV4cCI6MTY2Nzg1MTMxM30.vxYdNt2LLznO0U7RmaS7_xKllgxqLcMKZcHjSJAR-ok'
         }
     };
   const baseEndpoint = 'https://striveschool-api.herokuapp.com/api/posts/'
@@ -189,7 +189,7 @@ export const deletePostsWithThunk = (id) => {
     const options = {
       method: 'GET',
       headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMxOGRiNDc2NTM5YzAwMTViNWNkNmEiLCJpYXQiOjE2NjQxOTE5MjQsImV4cCI6MTY2NTQwMTUyNH0.L96ybdKZjUiPLG95huiiaqlmfE5bLIunxqmgGUnOYBY'
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzA3ODg0NDFlYjc2ZDAwMTUxNTAxZjgiLCJpYXQiOjE2NjY2NDE3MTMsImV4cCI6MTY2Nzg1MTMxM30.vxYdNt2LLznO0U7RmaS7_xKllgxqLcMKZcHjSJAR-ok'
           }
     };
   const baseEndpoint = 'https://striveschool-api.herokuapp.com/api/posts/'
@@ -217,7 +217,7 @@ export const deletePostsWithThunk = (id) => {
       method: 'POST',
           headers: {
             
-              Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMxOGRiNDc2NTM5YzAwMTViNWNkNmEiLCJpYXQiOjE2NjQxOTE5MjQsImV4cCI6MTY2NTQwMTUyNH0.L96ybdKZjUiPLG95huiiaqlmfE5bLIunxqmgGUnOYBY'
+              Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzA3ODg0NDFlYjc2ZDAwMTUxNTAxZjgiLCJpYXQiOjE2NjY2NDE3MTMsImV4cCI6MTY2Nzg1MTMxM30.vxYdNt2LLznO0U7RmaS7_xKllgxqLcMKZcHjSJAR-ok'
           },
           body: postObj
       };
@@ -280,7 +280,7 @@ export const postFeedImgWithThunk = (postImg,id) => {
     method: 'POST',
         headers: {
           
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMxOGRiNDc2NTM5YzAwMTViNWNkNmEiLCJpYXQiOjE2NjQxOTE5MjQsImV4cCI6MTY2NTQwMTUyNH0.L96ybdKZjUiPLG95huiiaqlmfE5bLIunxqmgGUnOYBY'
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzA3ODg0NDFlYjc2ZDAwMTUxNTAxZjgiLCJpYXQiOjE2NjY2NDE3MTMsImV4cCI6MTY2Nzg1MTMxM30.vxYdNt2LLznO0U7RmaS7_xKllgxqLcMKZcHjSJAR-ok'
         },
         body: postImg
     };
@@ -311,7 +311,7 @@ export const postFeedImgWithThunk = (postImg,id) => {
               method: 'PUT',
               headers: {
                   "Content-Type": "application/json",
-                  Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMxOGRiNDc2NTM5YzAwMTViNWNkNmEiLCJpYXQiOjE2NjQxOTE5MjQsImV4cCI6MTY2NTQwMTUyNH0.L96ybdKZjUiPLG95huiiaqlmfE5bLIunxqmgGUnOYBY'
+                  Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzA3ODg0NDFlYjc2ZDAwMTUxNTAxZjgiLCJpYXQiOjE2NjY2NDE3MTMsImV4cCI6MTY2Nzg1MTMxM30.vxYdNt2LLznO0U7RmaS7_xKllgxqLcMKZcHjSJAR-ok'
               },
               body: JSON.stringify(postObj)
           };
@@ -340,7 +340,7 @@ export const postFeedImgWithThunk = (postImg,id) => {
               method: 'POST',
               headers: {
                   "Content-Type": "application/json",
-                  Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMxOGRiNDc2NTM5YzAwMTViNWNkNmEiLCJpYXQiOjE2NjQxOTE5MjQsImV4cCI6MTY2NTQwMTUyNH0.L96ybdKZjUiPLG95huiiaqlmfE5bLIunxqmgGUnOYBY'
+                  Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzA3ODg0NDFlYjc2ZDAwMTUxNTAxZjgiLCJpYXQiOjE2NjY2NDE3MTMsImV4cCI6MTY2Nzg1MTMxM30.vxYdNt2LLznO0U7RmaS7_xKllgxqLcMKZcHjSJAR-ok'
               },
               body: JSON.stringify(postObj)
           };

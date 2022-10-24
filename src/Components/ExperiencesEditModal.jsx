@@ -36,7 +36,7 @@ const ExperiencesEditModal = (props) => {
          body: JSON.stringify(experience),
          headers: new Headers({
             "Content-type": "application/json",
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMxOGRiNDc2NTM5YzAwMTViNWNkNmEiLCJpYXQiOjE2NjQxOTE5MjQsImV4cCI6MTY2NTQwMTUyNH0.L96ybdKZjUiPLG95huiiaqlmfE5bLIunxqmgGUnOYBY'
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzA3ODg0NDFlYjc2ZDAwMTUxNTAxZjgiLCJpYXQiOjE2NjY2NDE3MTMsImV4cCI6MTY2Nzg1MTMxM30.vxYdNt2LLznO0U7RmaS7_xKllgxqLcMKZcHjSJAR-ok'
          })
       };
       console.log("2 EDIT exp:")
@@ -57,7 +57,7 @@ const ExperiencesEditModal = (props) => {
       const options = {
          method: 'DELETE',
          headers: new Headers({
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMxOGRiNDc2NTM5YzAwMTViNWNkNmEiLCJpYXQiOjE2NjQxOTE5MjQsImV4cCI6MTY2NTQwMTUyNH0.L96ybdKZjUiPLG95huiiaqlmfE5bLIunxqmgGUnOYBY'
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzA3ODg0NDFlYjc2ZDAwMTUxNTAxZjgiLCJpYXQiOjE2NjY2NDE3MTMsImV4cCI6MTY2Nzg1MTMxM30.vxYdNt2LLznO0U7RmaS7_xKllgxqLcMKZcHjSJAR-ok'
          })
       };
       console.log("2 DELETE exp:")
